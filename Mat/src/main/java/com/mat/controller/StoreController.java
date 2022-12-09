@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mat.category.model.CategoryVO;
+import com.mat.priceRange.model.PriceRangeVO;
 import com.mat.store.model.StoreDAO;
 import com.mat.store.model.StoreVO;
 import com.mat.store.service.StoreService;
@@ -41,17 +42,20 @@ public class StoreController extends HttpServlet {
 		String command = uri.substring(path.length());
 
 		System.out.println("요청 경로 : " + command);
-		
+
 		CategoryVO categoryVO = new CategoryVO();
-		StoreService storeService = new StoreServiceImpl();
-		StoreVO storeVO = new StoreVO();
 		StoreDAO storeDAO = StoreDAO.getInstance();
+		StoreService storeService = new StoreServiceImpl();
 		
 		
 		if(command.equals("/store/store_main.store")) {
 			
-			ArrayList<StoreVO> list = storeService.selectJg(request, response);
-			request.setAttribute("list", list);
+			ArrayList<StoreVO> storeList = storeService.selectJg(request, response);
+			request.setAttribute("storeList", storeList);
+			ArrayList<CategoryVO> categoryList = storeService.selectC(request, response);
+			request.setAttribute("categoryList", categoryList);
+			ArrayList<PriceRangeVO> priceRangeList = storeService.selectP(request, response);
+			request.setAttribute("priceRangeList", priceRangeList);
 			
 			request.getRequestDispatcher("store_main.jsp").forward(request, response);//파일의 경로 
 			

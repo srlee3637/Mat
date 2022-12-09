@@ -27,7 +27,7 @@
 					<td><a href="store_detail.store?category=${vo.category }">${vo.category }</a></td>
 				</tr>
 				</c:forEach>
-			</tbody>			
+			</tbody>
 		</table>
 		
 		<table class="table table-bordered">
@@ -36,8 +36,8 @@
 				</tr>
 
 				<tr>
-				<c:forEach var="vo" items="${categoryList }" varStatus="s">
-					<td><a href="store_c.store?storeName=${vo.storeName }">${vo.storeName }</a></td>
+				<c:forEach var="vo1" items="${categoryList }" varStatus="s">
+					<td><a href="store_c.store?storeName=${vo1.categoryType }">${vo1.categoryType }</a></td>
 				</c:forEach>
 				</tr>
 		</table>
@@ -48,8 +48,8 @@
 				</tr>
 			
 				<tr>
-				<c:forEach var="vo" items="${priceRangeList }" varStatus="s">
-					<td><a href="store_p.store?storeName=${vo.storeName }">${vo.storeName }</a></td>
+				<c:forEach var="vo2" items="${priceRangeList }" varStatus="s">
+					<td><a href="store_p.store?storeName=${vo2.priceRange }">${vo2.priceRange }</a></td>
 				</c:forEach>
 				</tr>
 		</table>

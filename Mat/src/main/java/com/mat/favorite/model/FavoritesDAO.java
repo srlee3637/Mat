@@ -118,29 +118,26 @@ public class FavoritesDAO {
 
 			String sql = "select * from favorites where id = ?";
 
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 
 				conn = DriverManager.getConnection(URL, UID, UPW);
 
 				pstmt = conn.prepareStatement(sql);
-
+				
+				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
-
+				
 				while(rs.next()) {
 					
-					int storeNum = rs.getInt("storeNum");
+					int favoritesNum = rs.getInt("favoritesNum");
 					String storeName = rs.getString("storeName");
 					String repMenu = rs.getString("repMenu");
 					int price = rs.getInt("price");
 					String category = rs.getString("category");
 					
 
-					FavoritesVO vo = new FavoritesVO(storeNum,storeName, repMenu, price, category,id);
+					FavoritesVO vo = new FavoritesVO(favoritesNum,storeName, repMenu, price, category,id);
 					list.add(vo);
 				}
 

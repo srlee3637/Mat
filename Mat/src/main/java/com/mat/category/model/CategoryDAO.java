@@ -48,7 +48,7 @@ public class CategoryDAO {
 
 		ArrayList<CategoryVO> list = new ArrayList<>();
 
-		String sql = "select * from STORE where locationType = 1";
+		String sql = "select * from category";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

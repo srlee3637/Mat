@@ -46,7 +46,7 @@ public class PriceRangeDAO {
 
 		ArrayList<PriceRangeVO> list = new ArrayList<>();
 
-		String sql = "select * from STORE where locationType = 1";
+		String sql = "select * from priceRange";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

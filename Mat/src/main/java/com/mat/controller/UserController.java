@@ -2,6 +2,7 @@ package com.mat.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mat.favorite.model.FavoritesVO;
 import com.mat.user.model.UserVO;
 import com.mat.user.service.UserServiceImpl;
 
@@ -105,7 +107,9 @@ public class UserController extends HttpServlet {
 
 			
 		}else if(command.equals("/user/user_favorite.user")) {//즐겨찾기
-
+			
+			ArrayList<FavoritesVO> list = service.getFavorites(request, response);
+			request.setAttribute("list", list);
 			request.getRequestDispatcher("user_favorite.jsp").forward(request, response);//파일의 경로 
 
 			

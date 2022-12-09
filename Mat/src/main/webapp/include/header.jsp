@@ -110,7 +110,7 @@
                         <a href="${pageContext.request.contextPath}/user/user_mypage.user" style="color:blue" >마이페이지</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/user/user_join.user" style="color:red">즐겨찾기</a>
+                        <a href="${pageContext.request.contextPath}/user/user_favorite.user" style="color:red">즐겨찾기</a>
                     </li>
                   	</c:if>
                     

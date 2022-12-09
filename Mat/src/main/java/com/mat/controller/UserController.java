@@ -98,7 +98,13 @@ public class UserController extends HttpServlet {
 			
 			request.getRequestDispatcher("user_mypage.jsp").forward(request, response);//파일의 경로 
 
-		}else if(command.equals("/board/user_favorite.user")) {//즐겨찾기
+		}else if(command.equals("/user/favoriteForm.user")) {//즐겨찾기 추가
+
+			
+			request.getRequestDispatcher("user_favorite.jsp").forward(request, response);//파일의 경로 
+
+			
+		}else if(command.equals("/user/user_favorite.user")) {//즐겨찾기
 
 			request.getRequestDispatcher("user_favorite.jsp").forward(request, response);//파일의 경로 
 

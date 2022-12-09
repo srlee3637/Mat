@@ -10,6 +10,7 @@ public class StoreVO {
 	private int price;
 	private String contact;
 	private String category;
+	private int priceRangeType;
 	
 	
 	public StoreVO() {
@@ -23,21 +24,19 @@ public class StoreVO {
 		this.price = price;
 		this.category = category;
 	}
-	
-	
 
-	public StoreVO(String storeName, String repMenu, int price, String category, String storeAddress, String contact) {
+	public StoreVO(String storeName, String storeAddress, String repMenu, int price, String contact, String category) {
 		super();
 		this.storeName = storeName;
+		this.storeAddress = storeAddress;
 		this.repMenu = repMenu;
 		this.price = price;
-		this.category = category;
-		this.storeAddress = storeAddress;
 		this.contact = contact;
+		this.category = category;
 	}
 
 	public StoreVO(int storeNum, int locationType, String storeName, String storeAddress, String repMenu, int price,
-			String contact, String category) {
+			String contact, String category, int priceRangeType) {
 		super();
 		this.storeNum = storeNum;
 		this.locationType = locationType;
@@ -47,6 +46,7 @@ public class StoreVO {
 		this.price = price;
 		this.contact = contact;
 		this.category = category;
+		this.priceRangeType = priceRangeType;
 	}
 
 	
@@ -78,8 +78,8 @@ public class StoreVO {
 		return storeAddress;
 	}
 
-	public void setStoreAddress(String address) {
-		this.storeAddress = address;
+	public void setStoreAddress(String storeAddress) {
+		this.storeAddress = storeAddress;
 	}
 
 	public String getRepMenu() {
@@ -113,7 +113,15 @@ public class StoreVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
+
+	public int getPriceRangeType() {
+		return priceRangeType;
+	}
+
+	public void setPriceRangeType(int priceRangeType) {
+		this.priceRangeType = priceRangeType;
+	}
+
 	
 	public String toString() {
 		return "가게명 :" + storeName + ", 대표메뉴 : " + repMenu +

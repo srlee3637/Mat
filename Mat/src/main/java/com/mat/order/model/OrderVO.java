@@ -9,19 +9,21 @@ public class OrderVO {
 	private String repMenu;
 	private int menuCnt;
 	private Timestamp orderDate;
+	private String id;
 	
 	
 	public OrderVO() {
 		super();
 	}
 
-	public OrderVO(int orderNum, String storeName, String repMenu, int menuCnt, Timestamp orderDate) {
+	public OrderVO(int orderNum, String storeName, String repMenu, int menuCnt, Timestamp orderDate, String id) {
 		super();
 		this.orderNum = orderNum;
 		this.storeName = storeName;
 		this.repMenu = repMenu;
 		this.menuCnt = menuCnt;
 		this.orderDate = orderDate;
+		this.id = id;
 	}
 
 	
@@ -65,10 +67,18 @@ public class OrderVO {
 		this.orderDate = orderDate;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 
 	public String toString() {
-		return "OrderDAO : orderNum=" + orderNum + ", storeName=" + storeName + ", repMenu=" + repMenu + ", menuCnt="
-				+ menuCnt + ", orderDate=" + orderDate;
+		return "OrderVO : orderNum=" + orderNum + ", storeName=" + storeName + ", repMenu=" + repMenu + ", menuCnt="
+				+ menuCnt + ", orderDate=" + orderDate + ", id=" + id;
 	}
 	
 }

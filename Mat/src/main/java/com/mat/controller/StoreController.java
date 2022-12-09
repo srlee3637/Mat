@@ -9,17 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mat.category.model.CategoryVO;
-import com.mat.order.model.OrderDAO;
-import com.mat.order.model.OrderVO;
-import com.mat.order.service.OrderService;
-import com.mat.order.service.OrderServiceImpl;
+import com.mat.store.model.StoreDAO;
+import com.mat.store.model.StoreVO;
+import com.mat.store.service.StoreService;
+import com.mat.store.service.StoreServiceImpl;
 
-@WebServlet("*.order")
-public class OrderController extends HttpServlet {
+@WebServlet("*.store")
+public class StoreController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public OrderController() { }
+	public StoreController() { }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doAction(request, response);
@@ -42,41 +42,43 @@ public class OrderController extends HttpServlet {
 		System.out.println("요청 경로 : " + command);
 		
 		CategoryVO categoryVO = new CategoryVO();
-		OrderService orderService = new OrderServiceImpl();
-		OrderVO orderVO = new OrderVO();
-		OrderDAO orderDAO = OrderDAO.getInstance();
+		StoreService storeService = new StoreServiceImpl();
+		StoreVO storeVO = new StoreVO();
+		StoreDAO storeDAO = StoreDAO.getInstance();
 		
 		
-		if(command.equals("/order/order_main.order")) {
+		if(command.equals("/store/store_main.store")) {
 			
-			request.getRequestDispatcher("order_main.jsp").forward(request, response);//파일의 경로 
+//			ArrayList<StoreVO>
+			
+			request.getRequestDispatcher("store_main.jsp").forward(request, response);//파일의 경로 
 
 			
-		} else if(command.equals("/order/order_c.order")) {
+		} else if(command.equals("/store/store_c.store")) {
 			
 			
 			
-		} else if(command.equals("/order/order_p.order")) {
+		} else if(command.equals("/store/store_p.store")) {
 			
 			
 			
-		} else if(command.equals("/order/order_cp.order")) {
+		} else if(command.equals("/store/store_cp.store")) {
 			
 			
 			
-		} else if(command.equals("/order/order_pc.order")) {
+		} else if(command.equals("/store/store_pc.store")) {
 			
 			
 			
-		} else if(command.equals("/order/order_store.order")) {
+		} else if(command.equals("/store/store_detail.store")) {
 			
 			
 			
-		} else if(command.equals("/order/order_complete.order")) {
+		} else if(command.equals("/store/store_complete.store")) {
 			
 			
 			
-		} else if(command.equals("/order/order_history.order")) {
+		} else if(command.equals("/store/store_history.store")) {
 			
 			
 			

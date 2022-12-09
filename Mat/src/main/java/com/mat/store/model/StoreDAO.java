@@ -56,13 +56,19 @@ public class StoreDAO {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-
+				
+				int storeNum = rs.getInt("storeNum");
+				int locationType = rs.getInt("locationType");
 				String storeName = rs.getString("storeName");
+				String storeAddress = rs.getString("storeAddress");
 				String repMenu = rs.getString("repMenu");
 				int price = rs.getInt("price");
+				String contact = rs.getString("contact");
 				String category = rs.getString("category");
-
-				StoreVO vo = new StoreVO(storeName, repMenu, price, category);
+				int priceRangeType = rs.getInt("priceRangeType");
+				
+				StoreVO vo = new StoreVO(storeNum, locationType, storeName,
+						storeAddress, repMenu, price, contact, category, priceRangeType);
 				list.add(vo);
 			}
 

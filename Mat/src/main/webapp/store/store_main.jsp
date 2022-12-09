@@ -7,14 +7,27 @@
 	
 
 	<div class="container">
-		<h3>음식 카테고리 / 가격대</h3>
+		<h3>중구 소재 가게</h3>
 		
 		<table class="table table-bordered">
-		<tr>
-			<c:forEach var="list" items="${list }" varStatus="s">
-				<td><a href="order_category.order?bno=${list.storeName }">${list.storeName }</a></td>
-			</c:forEach>
-		</tr>
+			<thead>
+				<tr>
+					<th>가게이름</th>
+					<th>대표메뉴</th>
+					<th>가격</th>
+					<th>카테고리</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="vo" items="${storeList }" varStatus="s">
+				<tr>
+					<td><a href="store_detail.store?storeName=${vo.storeName }">${vo.storeName }</a></td>
+					<td><a href="store_detail.store?repMenu=${vo.repMenu }">${vo.repMenu }</a></td>
+					<td><a href="store_detail.store?price=${vo.price }">${vo.price }</a></td>
+					<td><a href="store_detail.store?category=${vo.category }">${vo.category }</a></td>
+				</tr>
+				</c:forEach>
+			</tbody>			
 		</table>
 		
 		<table class="table table-bordered">
@@ -23,19 +36,20 @@
 				</tr>
 
 				<tr>
-				<c:forEach var="list" items="${list }" varStatus="s">
-					<td><a href="order_category.order?bno=${list.storeName }">${list.storeName }</a></td>
+				<c:forEach var="vo" items="${categoryList }" varStatus="s">
+					<td><a href="store_c.store?storeName=${vo.storeName }">${vo.storeName }</a></td>
 				</c:forEach>
 				</tr>
-			
-			
+		</table>
+		
+		<table class="table table-bordered">
 				<tr>
 					<th>가격대</th>
 				</tr>
 			
 				<tr>
-				<c:forEach var="list" items="${list }" varStatus="s">
-					<td><a href="order_category.order?bno=${list.storeName }">${list.storeName }</a></td>
+				<c:forEach var="vo" items="${priceRangeList }" varStatus="s">
+					<td><a href="store_p.store?storeName=${vo.storeName }">${vo.storeName }</a></td>
 				</c:forEach>
 				</tr>
 		</table>

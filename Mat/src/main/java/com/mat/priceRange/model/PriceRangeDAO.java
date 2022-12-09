@@ -1,4 +1,4 @@
-package com.mat.category.model;
+package com.mat.priceRange.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,19 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mat.category.model.CategoryDAO;
-import com.mat.store.model.StoreVO;
 import com.mat.util.JDBCUtil;
 
-public class CategoryDAO {
+public class PriceRangeDAO {
 	
 	//현재의 객체만 만들어지도록 Singleton 형식으로 설계
 
 	//1. 나 자신의 객체를 생성해서 1개로 제한한다.
-	private static CategoryDAO instance = new CategoryDAO();
+	private static PriceRangeDAO instance = new PriceRangeDAO();
 
 	//2. 직접 객체를 생성할 수 없도록 생성자에 private 선언
-	private CategoryDAO() {
+	private PriceRangeDAO() {
 		//드라이버 클래스 로드
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -29,7 +27,7 @@ public class CategoryDAO {
 	}
 
 	//3. 외부에서 객체 생성을 요구할 때 getter 메서드를 통해 1번의 객체를 반환
-	public static CategoryDAO getInstance() {
+	public static PriceRangeDAO getInstance() {
 		return instance;
 	}
 
@@ -43,10 +41,10 @@ public class CategoryDAO {
 	private ResultSet rs;
 	
 	
-	//카테고리 선택 메서드
-	public ArrayList<CategoryVO> selectC() {
+	//가격대 선택 메서드
+	public ArrayList<PriceRangeVO> selectP() {
 
-		ArrayList<CategoryVO> list = new ArrayList<>();
+		ArrayList<PriceRangeVO> list = new ArrayList<>();
 
 		String sql = "select * from STORE where locationType = 1";
 
@@ -59,10 +57,10 @@ public class CategoryDAO {
 
 			while(rs.next()) {
 				
-				int categoryNum = rs.getInt("categoryNum");
-				String categoryType = rs.getString("categoryType");
+				int priceRangeType = rs.getInt("priceRangeType");
+				String priceRange = rs.getString("priceRange");
 				
-				CategoryVO vo = new CategoryVO(categoryNum, categoryType);
+				PriceRangeVO vo = new PriceRangeVO(priceRangeType, priceRange);
 				list.add(vo);
 			}
 

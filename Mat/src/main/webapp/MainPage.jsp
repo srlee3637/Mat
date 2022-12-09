@@ -69,34 +69,7 @@
             
         </div>
 
-        <div class="row">
-            <div class="box">
-            
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">hello World
-                        <strong>유의 사항!</strong>
-                    </h2>
-                    <hr>
-		                <div class="inner" align="center">
-		                    <img class="img-responsive img-center" src="img/intro.png" alt=""><!-- img-border --> 
-		                    
-		                    <hr class="visible-xs">
-		                   
-		                    <p>1. 모든 자료는 회원 가입 후에 이용하실 수 있습니다.</p>
-		                    <p>2. ------------------------------------------------------</p>
-		                    <p>3. ------------------------------------------------------</p>
-	                    	
-	                    </div>
-	                    	
-                    
-                </div>
-              
-                
-                
-                
-            </div>
-        </div>
+       
 
           
     <!-- /.container -->

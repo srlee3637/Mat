@@ -4,16 +4,30 @@
 <section>
 	<div align="center">
 		<form action="loginForm.user" method="post">
-			<span style="color:red;">${msg }</span>
-			<h3>로그인 연습</h3>
-			<input type="text" name="id" placeholder="아이디"  ><br>
-			<input type="password" name="pw" placeholder="비밀번호" ><br>
-			
-			<input type="submit" value="로그인" class="btn btn-default">
-		</form>
+			<span style="color: red;">${msg }</span>
+			<h3>로그인</h3>
 
+			<table border="1" >
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="id">
+					<td>
+				</tr>
+
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" name="pw"></td>
+				</tr>
+			</table>
+
+			<input type="submit" value="로그인" class="btn btn-default"> 
+			<input type="button" value="회원가입" class="btn btn-default" onclick="location.href='user_join.user'">
+
+		</form>
 	</div>
+
 </section>
+
 
 <script>
 	var msg = '${msg}';

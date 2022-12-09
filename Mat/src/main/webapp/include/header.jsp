@@ -43,7 +43,7 @@
 	}
 	
 	a:link {
-  	color : yellow;
+  	color : black;
 	}
 	a:visited {
   	color : gray;

@@ -8,36 +8,36 @@
 
 	<div class="container">
 		<h3>음식 카테고리 / 가격대</h3>
-
+		
 		<table class="table table-bordered">
-			<thead>
+		<tr>
+			<c:forEach var="list" items="${list }" varStatus="s">
+				<td><a href="order_category.order?bno=${list.storeName }">${list.storeName }</a></td>
+			</c:forEach>
+		</tr>
+		</table>
+		
+		<table class="table table-bordered">
 				<tr>
 					<th>음식 카테고리</th>
 				</tr>
-			</thead>
 
-			<tbody>
 				<tr>
-				<c:forEach var="vo" items="${list }" varStatus="s">
-					<td><a href="order_category.order?bno=${vo.categoryType }">${vo.categoryType }</a></td>
+				<c:forEach var="list" items="${list }" varStatus="s">
+					<td><a href="order_category.order?bno=${list.storeName }">${list.storeName }</a></td>
 				</c:forEach>
 				</tr>
-			</tbody>
 			
 			
-			<thead>
 				<tr>
 					<th>가격대</th>
 				</tr>
-			</thead>			
 			
-			<tbody>
 				<tr>
-				<c:forEach var="vo2" items="${list2 }" varStatus="s2">
-					<td><a href="order_price.order?bno=${vo.priceRange }">${vo.priceRange }</a></td>
+				<c:forEach var="list" items="${list }" varStatus="s">
+					<td><a href="order_category.order?bno=${list.storeName }">${list.storeName }</a></td>
 				</c:forEach>
 				</tr>
-			</tbody>
 		</table>
 	</div>
 			

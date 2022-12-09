@@ -73,10 +73,7 @@ public class UserServiceImpl implements UserService{
 		UserDAO dao = UserDAO.getInstance();
 		int result = dao.update(id, pw, name, gender);
 
-		if(result == 1) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user_name", name);
-		}
+		
 
 		return result;
 	}

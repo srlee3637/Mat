@@ -357,10 +357,10 @@ public class StoreDAO {
 				String repMenu = rs.getString("repMenu");
 				int price = rs.getInt("price");
 				String category = rs.getString("category");
-				String address = rs.getString("address");
+				String storeAddress = rs.getString("storeAddress");
 				String contact = rs.getString("contact");
 
-				StoreVO vo = new StoreVO(storeName, repMenu, price, category, address, contact);
+				StoreVO vo = new StoreVO(storeName, storeAddress, repMenu, price, category, contact);
 				list.add(vo);
 			}
 

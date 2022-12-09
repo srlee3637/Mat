@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mat.category.model.CategoryVO;
+import com.mat.order.model.OrderDAO;
+import com.mat.order.model.OrderVO;
 import com.mat.order.service.OrderService;
 import com.mat.order.service.OrderServiceImpl;
 
@@ -41,8 +43,39 @@ public class OrderController extends HttpServlet {
 		
 		CategoryVO categoryVO = new CategoryVO();
 		OrderService orderService = new OrderServiceImpl();
+		OrderVO orderVO = new OrderVO();
+		OrderDAO orderDAO = OrderDAO.getInstance();
+		
 		
 		if(command.equals("/order/order_main.order")) {
+			
+			
+			
+		} else if(command.equals("/order/order_c.order")) {
+			
+			
+			
+		} else if(command.equals("/order/order_p.order")) {
+			
+			
+			
+		} else if(command.equals("/order/order_cp.order")) {
+			
+			
+			
+		} else if(command.equals("/order/order_pc.order")) {
+			
+			
+			
+		} else if(command.equals("/order/order_store.order")) {
+			
+			
+			
+		} else if(command.equals("/order/order_complete.order")) {
+			
+			
+			
+		} else if(command.equals("/order/order_history.order")) {
 			
 			
 			

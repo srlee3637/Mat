@@ -33,8 +33,8 @@ public class StoreDAO {
 
 	//4. 필요한 데이터베이스 변수 선언
 	public static final String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	public static final String uid = "mat";
-	public static final String upw = "mat";
+	public static final String uid = "Matzip";
+	public static final String upw = "Matzip";
 
 	private Connection conn;
 	private PreparedStatement pstmt;

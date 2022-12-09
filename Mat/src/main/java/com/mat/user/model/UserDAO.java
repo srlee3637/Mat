@@ -37,8 +37,8 @@ public class UserDAO {
 	
 	//4.필요한 데이터 베이스 변수 선언
 	public String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	public String UID = "mat";
-	public String UPW = "mat";
+	public String UID = "Matzip";
+	public String UPW = "Matzip";
 	
 	private Connection conn;
 	private PreparedStatement pstmt;

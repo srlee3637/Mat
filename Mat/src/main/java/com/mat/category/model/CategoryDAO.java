@@ -31,8 +31,8 @@ public class CategoryDAO {
 
 	//4. 필요한 데이터베이스 변수 선언
 	public static final String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	public static final String uid = "jsp";
-	public static final String upw = "jsp";
+	public static final String uid = "Matzip";
+	public static final String upw = "Matzip";
 
 	private Connection conn;
 	private PreparedStatement pstmt;

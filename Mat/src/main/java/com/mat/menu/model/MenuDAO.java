@@ -12,8 +12,8 @@ import com.mat.util.JDBCUtil;
 public class MenuDAO {
 
 	public static final String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	public static final String uid = "Matzip";
-	public static final String upw = "Matzip";
+	public static final String uid = "mat";
+	public static final String upw = "mat";
 
 	Scanner sc = new Scanner(System.in);
 	

@@ -1,9 +1,13 @@
 package com.mat.user.service;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mat.favorite.model.FavoritesDAO;
+import com.mat.favorite.model.FavoritesVO;
 import com.mat.user.model.UserDAO;
 import com.mat.user.model.UserVO;
 
@@ -14,6 +18,7 @@ public class UserServiceImpl implements UserService{
 	//가입처리
 
 	UserDAO dao = UserDAO.getInstance();
+	FavoritesDAO fdao = FavoritesDAO.getInstance();
 
 	public int join(HttpServletRequest request, HttpServletResponse response) {
 		String id =request.getParameter("id");
@@ -97,6 +102,28 @@ public class UserServiceImpl implements UserService{
 		}
 		return result;
 	}
+
+	@Override
+	public void insertFavor(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("user_id");
+		String storeNum = request.getParameter("storeNum");
+		fdao.insertFavorMain(storeNum, id);
+	}
+
+	@Override
+	public ArrayList<FavoritesVO> getFavorites(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		
+		String id = (String)session.getAttribute("user_id");
+		
+		ArrayList<FavoritesVO> list = fdao.getFavorites(id);
+		
+		return list;
+	}
+	
+	
+	
 
 
 }

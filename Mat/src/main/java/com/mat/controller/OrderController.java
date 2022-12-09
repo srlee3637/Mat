@@ -49,7 +49,8 @@ public class OrderController extends HttpServlet {
 		
 		if(command.equals("/order/order_main.order")) {
 			
-			
+			request.getRequestDispatcher("order_main.jsp").forward(request, response);//파일의 경로 
+
 			
 		} else if(command.equals("/order/order_c.order")) {
 			

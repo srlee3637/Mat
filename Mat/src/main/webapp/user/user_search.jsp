@@ -5,7 +5,7 @@
 	<div align="center">
 			<h3>지역 선택 </h3>
 
-			<input type="button" value="중구" class="btn btn-default" onclick="location.href=''">
+			<input type="button" value="중구" class="btn btn-default" onclick="location.href='../order/order_main.order'">
 
 		
 	</div>

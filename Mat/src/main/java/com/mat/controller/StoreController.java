@@ -1,6 +1,7 @@
 package com.mat.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,10 +50,10 @@ public class StoreController extends HttpServlet {
 		
 		if(command.equals("/store/store_main.store")) {
 			
-//			ArrayList<StoreVO>
+			ArrayList<StoreVO> list = storeService.selectJg(request, response);
+			request.setAttribute("list", list);
 			
 			request.getRequestDispatcher("store_main.jsp").forward(request, response);//파일의 경로 
-
 			
 		} else if(command.equals("/store/store_c.store")) {
 			

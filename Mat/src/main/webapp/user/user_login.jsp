@@ -10,17 +10,17 @@
 			<table border="1" >
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="id">
+					<td><input type="text" name="id" size="20">
 					<td>
 				</tr>
 
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pw"></td>
+					<td><input type="password" name="pw" size="20"></td>
 				</tr>
 			</table>
 
-			<input type="submit" value="로그인" class="btn btn-default"> 
+			<input type="submit" value="로그인"  class="btn btn-default"> 
 			<input type="button" value="회원가입" class="btn btn-default" onclick="location.href='user_join.user'">
 
 		</form>

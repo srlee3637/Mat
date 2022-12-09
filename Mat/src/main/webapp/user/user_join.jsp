@@ -15,14 +15,14 @@
 			<table border="1" >
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="id" placeholder="4~8글자 영문숫자"
+					<td><input type="text" name="id" placeholder="4~8글자 영문숫자" size="20"
 						pattern="\w{4,8}" required="required"></td>
 				</tr>
 
 
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pw" placeholder="4~8글자 영문숫자"
+					<td><input type="password" name="pw" placeholder="4~8글자 영문숫자" size="20"
 						pattern="\w{4,8}" required="required"></td>
 				</tr>
 
@@ -30,22 +30,21 @@
 
 
 					<td>주소</td>
-					<td><input type="text" name="userAddress" placeholder="주소" size="60"><br> 
+					<td><input type="text" name="userAddress" placeholder="주소" size="20"> 
 						
 						
-						<span id="guide" style="color: #999; display: none"></span> 
 
 				</tr>
 
 				<tr>
 					<td>연락처</td>
-					<td><input type="text" name="contact" ></td>
+					<td><input type="text" name="contact" size="20"></td>
 				</tr>
 
 
 				<tr>
 					<td>이메일</td>
-					<td><input type="email" name="email" required="required"></td>
+					<td><input type="email" name="email" required="required" size="20"></td>
 				</tr>
 
 

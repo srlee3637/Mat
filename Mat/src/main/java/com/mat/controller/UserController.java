@@ -126,8 +126,8 @@ public class UserController extends HttpServlet {
 			
 		}else if(command.equals("/user/user_modify.user")) {//즐겨찾기
 
-			UserVO vo2 =  service.getInfo(request, response);
-			request.setAttribute("vo2", vo2);
+			UserVO vo =  service.getInfo(request, response);
+			request.setAttribute("vo", vo);
 		
 			request.getRequestDispatcher("user_modify.jsp").forward(request, response);
 			

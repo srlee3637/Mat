@@ -1,12 +1,17 @@
 package com.mat.order.model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import com.mat.store.model.StoreVO;
+import com.mat.util.JDBCUtil;
 
 public class OrderDAO {
-	
-	//현재의 객체만 만들어지도록 Singleton 형식으로 설계한다.
+
+	//현재의 객체만 만들어지도록 Singleton 형식으로 설계
 
 	//1. 나 자신의 객체를 생성해서 1개로 제한한다.
 	private static OrderDAO instance = new OrderDAO();
@@ -29,11 +34,17 @@ public class OrderDAO {
 
 	//4. 필요한 데이터베이스 변수 선언
 	public static final String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	public static final String uid = "jsp";
-	public static final String upw = "jsp";
+	public static final String uid = "Matzip";
+	public static final String upw = "Matzip";
 
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+
+
 	
+
 }
+
+
+

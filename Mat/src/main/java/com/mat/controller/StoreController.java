@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mat.category.model.CategoryVO;
+import com.mat.menu.model.MenuVO;
+import com.mat.order.model.OrderDAO;
+import com.mat.order.service.OrderService;
+import com.mat.order.service.OrderServiceImpl;
 import com.mat.priceRange.model.PriceRangeVO;
-import com.mat.store.model.StoreDAO;
 import com.mat.store.model.StoreVO;
 import com.mat.store.service.StoreService;
 import com.mat.store.service.StoreServiceImpl;
@@ -43,10 +46,8 @@ public class StoreController extends HttpServlet {
 
 		System.out.println("요청 경로 : " + command);
 
-		CategoryVO categoryVO = new CategoryVO();
-		StoreDAO storeDAO = StoreDAO.getInstance();
 		StoreService storeService = new StoreServiceImpl();
-		
+		OrderDAO orderDAO = OrderDAO.getInstance();
 		
 		if(command.equals("/store/store_main.store")) {
 			
@@ -57,41 +58,53 @@ public class StoreController extends HttpServlet {
 			ArrayList<PriceRangeVO> priceRangeList = storeService.selectP(request, response);
 			request.setAttribute("priceRangeList", priceRangeList);
 			
-			request.getRequestDispatcher("store_main.jsp").forward(request, response);//파일의 경로 
+			request.getRequestDispatcher("store_main.jsp").forward(request, response);
+			
 			
 		} else if(command.equals("/store/store_c.store")) {
 			
+			String categoryType = request.getParameter("categoryType");
+			request.setAttribute("categoryType", categoryType);
+			
+			ArrayList<StoreVO> storeList = storeService.selectJgC(request, response);
+			request.setAttribute("storeList", storeList);
+			ArrayList<PriceRangeVO> priceRangeList = storeService.selectP(request, response);
+			request.setAttribute("priceRangeList", priceRangeList);
+			
+			request.getRequestDispatcher("store_c.jsp").forward(request, response);
 			
 			
 		} else if(command.equals("/store/store_p.store")) {
 			
+			String priceRangeType = request.getParameter("priceRangeType");
+			request.setAttribute("priceRangeType", priceRangeType);
+			
+			ArrayList<StoreVO> storeList = storeService.selectJgP(request, response);
+			request.setAttribute("storeList", storeList);
+			ArrayList<CategoryVO> categoryList = storeService.selectC(request, response);
+			request.setAttribute("categoryList", categoryList);
+			
+			request.getRequestDispatcher("store_p.jsp").forward(request, response);
 			
 			
 		} else if(command.equals("/store/store_cp.store")) {
 			
+			ArrayList<StoreVO> storeList = storeService.selectJgCP(request, response);
+			request.setAttribute("storeList", storeList);
 			
-			
-		} else if(command.equals("/store/store_pc.store")) {
-			
+			request.getRequestDispatcher("store_cp.jsp").forward(request, response);
 			
 			
 		} else if(command.equals("/store/store_detail.store")) {
 			
+			StoreVO storeVO = storeService.selectStore(request, response);
+			request.setAttribute("storeVO", storeVO);
+			ArrayList<MenuVO> menuList = storeService.getMenu(request, response);
+			request.setAttribute("menuList", menuList);
 			
-			
-		} else if(command.equals("/store/store_complete.store")) {
-			
-			
-			
-		} else if(command.equals("/store/store_history.store")) {
-			
-			
-			
-		}
-
+			request.getRequestDispatcher("store_detail.jsp").forward(request, response);
+		} 
 
 	}
-
-
 
 }

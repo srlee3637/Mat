@@ -2,24 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%
+	String categoryType = request.getParameter("categoryType");
+%>
 <%@ include file="../include/header.jsp" %>
 	
 	<div class="container">
-		<h3>음식 카테고리 및 가격대</h3>
 		
-		<table class="table table-bordered">
-				<tr>
-					<td colspan=6 align="center">음식 카테고리</td>
-				</tr>
-
-				<tr>
-				<c:forEach var="vo" items="${categoryList }" varStatus="s">
-					<td><a href="store_c.store?categoryType=${vo.categoryType }">${vo.categoryType }</a></td>
-				</c:forEach>
-				</tr>
-		</table>
-		
+		<h3>음식 가격대</h3>
 		<table class="table table-bordered">
 				<tr>
 					<td colspan=3 align="center">가격대</td>
@@ -27,13 +17,13 @@
 			
 				<tr>
 				<c:forEach var="vo" items="${priceRangeList }" varStatus="s">
-					<td><a href="store_p.store?priceRangeType=${vo.priceRangeType }">${vo.priceRange }</a></td>
+					<td><a href="store_cp.store?categoryType=<%=categoryType %>&priceRangeType=${vo.priceRangeType }">${vo.priceRange }</a></td>
 				</c:forEach>
 				</tr>
 		</table>
 
 		<br>
-		<h3>중구 소재 가게</h3>
+		<h3>가게 정보</h3>
 		
 		<table class="table table-bordered">
 			<thead>

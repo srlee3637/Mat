@@ -2,15 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%
-	String cnt1 = request.getParameter("cnt1");
-	String cnt2 = request.getParameter("cnt2");
-	String cnt3 = request.getParameter("cnt3");
-%>
 <%@ include file="../include/header.jsp" %>
 	
 	<div class="container">
-		<h3>가게 상세 정보</h3>
+		<h3>주문 가게 정보</h3>
 		
 		<table class="table table-bordered">
 			<thead>
@@ -35,11 +30,11 @@
 			</tbody>
 		</table>
 		
-		<input type="button" value="즐겨찾기 추가" class="btn btn-default" onclik="location.href='store_order.store'">
+		<input type="button" value="즐겨찾기 추가" class="btn btn-default" onclik="location.href='order_detail.order'">
 		<input type="hidden" name="storeNum" value="${storeVO.storeNum }">
 		
 		<br>
-		<h3>가게 메뉴</h3>
+		<h3>주문 메뉴</h3>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -49,18 +44,21 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="vo" items="${menuList }" varStatus="s">
+				<c:forEach var="vo" items="${list }" varStatus="s">
 				<tr>
 					<td align="center">${vo.menuName }</td>
 					<td align="center">${vo.price }</td>
-					<td align="center"><%=cnt1 %></td>
+					<td align="center">${vo.menuQuantity }</td>
 				</tr>
+				<c:set var="sum" value="${sum + vo.price * vo.menuQuantity }"/>
 				</c:forEach>
 			</tbody>
 			<tbody>
 				<tr>
-					<td colspan="3" align="center">
-						<form action="order_history.store" class="form-inline" >
+					<td align="center">총 주문 금액</td>
+					<td align="center">${sum }</td>
+					<td align="center">
+						<form action="order_history.order" class="form-inline" >
 						  <div class="form-group">
 						  	<input type="submit" value="주문 내역" class="btn btn-default">
 						  </div>

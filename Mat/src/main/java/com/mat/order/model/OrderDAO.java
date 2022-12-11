@@ -37,11 +37,11 @@ public class OrderDAO {
 	
 	
 	//Insert Method
-	public int insertOrder(String id, String storeName, String menuNum, String menuName, String price, String menuCnt) {
+	public int insertOrder(String id, String storeNum, String storeName, String menuNum, String menuName, String price, String menuCnt) {
 
 		int result = 0;
 		
-		String sql = "insert into ORDERS values(orders_seq.nextval, ?, ?, ?, ?, ?, ?, sysdate)";
+		String sql = "insert into ORDERS values(orders_seq.nextval, ?, ?, ?, ?, ?, ?, sysdate, ?)";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -55,6 +55,7 @@ public class OrderDAO {
 			pstmt.setString(4, menuName);
 			pstmt.setString(5, price);
 			pstmt.setString(6, menuCnt);
+			pstmt.setString(7, storeNum);
 
 			result = pstmt.executeUpdate();
 
@@ -74,7 +75,7 @@ public class OrderDAO {
 
 		ArrayList<OrderVO> list = new ArrayList<>();
 
-		String sql = "select * from ORDERS";
+		String sql = "select * from ORDERS order by orderNum desc";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -87,6 +88,7 @@ public class OrderDAO {
 				
 				String orderNum = rs.getString("orderNum");
 				String id = rs.getString("id");
+				String storeNum = rs.getString("storeNum");
 				String storeName = rs.getString("storeName");
 				String menuNum = rs.getString("menuNum");
 				String menuName = rs.getString("menuName");
@@ -94,7 +96,7 @@ public class OrderDAO {
 				String menuCnt = rs.getString("menuCnt");
 				Timestamp orderDate = rs.getTimestamp("orderDate");
 				
-				OrderVO vo = new OrderVO(orderNum, id, storeName,
+				OrderVO vo = new OrderVO(orderNum, id, storeNum, storeName,
 						menuNum, menuName, price, menuCnt, orderDate);
 				list.add(vo);
 			}

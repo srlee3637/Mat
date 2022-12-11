@@ -7,6 +7,7 @@ public class OrderDetailVO {
 	private String orderDetailNum;
 	private String orderNum;
 	private String id;
+	private String storeNum;
 	private String storeName;
 	private String menuNum;
 	private String menuName;
@@ -17,12 +18,13 @@ public class OrderDetailVO {
 	
 	public OrderDetailVO() { }
 
-	public OrderDetailVO(String orderDetailNum, String orderNum, String id, String storeName, String menuNum,
-			String menuName, String price, String menuQuantity, Timestamp orderDate) {
+	public OrderDetailVO(String orderDetailNum, String orderNum, String id, String storeNum, String storeName,
+			String menuNum, String menuName, String price, String menuQuantity, Timestamp orderDate) {
 		super();
 		this.orderDetailNum = orderDetailNum;
 		this.orderNum = orderNum;
 		this.id = id;
+		this.storeNum = storeNum;
 		this.storeName = storeName;
 		this.menuNum = menuNum;
 		this.menuName = menuName;
@@ -54,6 +56,14 @@ public class OrderDetailVO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getStoreNum() {
+		return storeNum;
+	}
+
+	public void setStoreNum(String storeNum) {
+		this.storeNum = storeNum;
 	}
 
 	public String getStoreName() {
@@ -92,8 +102,8 @@ public class OrderDetailVO {
 		return menuQuantity;
 	}
 
-	public void setMenuQuantity(String menuCnt) {
-		this.menuQuantity = menuCnt;
+	public void setMenuQuantity(String menuQuantity) {
+		this.menuQuantity = menuQuantity;
 	}
 
 	public Timestamp getOrderDate() {
@@ -107,8 +117,11 @@ public class OrderDetailVO {
 	
 	public String toString() {
 		return "OrderDetailVO : orderDetailNum=" + orderDetailNum + ", orderNum=" + orderNum + ", id=" + id
-				+ ", storeName=" + storeName + ", menuNum=" + menuNum + ", menuName=" + menuName + ", price=" + price
-				+ ", menuQuantity=" + menuQuantity + ", orderDate=" + orderDate;
+				+ ", storeNum=" + storeNum + ", storeName=" + storeName + ", menuNum=" + menuNum + ", menuName="
+				+ menuName + ", price=" + price + ", menuQuantity=" + menuQuantity + ", orderDate=" + orderDate;
 	}
 
+	
+	
+	
 }

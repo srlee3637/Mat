@@ -2,15 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%
-	String cnt1 = request.getParameter("cnt1");
-	String cnt2 = request.getParameter("cnt2");
-	String cnt3 = request.getParameter("cnt3");
-	
-	
-	
-	
-%>
 <%@ include file="../include/header.jsp" %>
 	
 	<div class="container">
@@ -64,9 +55,9 @@
 			</tbody>
 			<tbody>
 				<tr>
-					<td>총 주문 금액</td>
-					<td>${sum }</td>
-					<td>
+					<td align="center">총 주문 금액</td>
+					<td align="center">${sum }</td>
+					<td align="center">
 						<form action="order_history.order" class="form-inline" >
 						  <div class="form-group">
 						  	<input type="submit" value="주문 내역" class="btn btn-default">

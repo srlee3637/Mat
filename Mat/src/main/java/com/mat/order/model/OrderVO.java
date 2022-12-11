@@ -6,6 +6,7 @@ public class OrderVO {
 	
 	private String orderNum;
 	private String id;
+	private String storeNum;
 	private String storeName;
 	private String menuNum;
 	private String menuName;
@@ -18,11 +19,12 @@ public class OrderVO {
 		super();
 	}
 
-	public OrderVO(String orderNum, String id, String storeName, String menuNum, String menuName, String price,
-			String menuCnt, Timestamp orderDate) {
+	public OrderVO(String orderNum, String id, String storeNum, String storeName, String menuNum, String menuName,
+			String price, String menuCnt, Timestamp orderDate) {
 		super();
 		this.orderNum = orderNum;
 		this.id = id;
+		this.storeNum = storeNum;
 		this.storeName = storeName;
 		this.menuNum = menuNum;
 		this.menuName = menuName;
@@ -46,6 +48,14 @@ public class OrderVO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getStoreNum() {
+		return storeNum;
+	}
+
+	public void setStoreNum(String storeNum) {
+		this.storeNum = storeNum;
 	}
 
 	public String getStoreName() {
@@ -98,8 +108,12 @@ public class OrderVO {
 
 	
 	public String toString() {
-		return "OrderVO : orderNum=" + orderNum + ", id=" + id + ", storeName=" + storeName + ", menuNum=" + menuNum
-				+ ", menuName=" + menuName + ", price=" + price + ", menuCnt=" + menuCnt + ", orderDate=" + orderDate;
+		return "OrderVO : orderNum=" + orderNum + ", id=" + id + ", storeNum=" + storeNum + ", storeName=" + storeName
+				+ ", menuNum=" + menuNum + ", menuName=" + menuName + ", price=" + price + ", menuCnt=" + menuCnt
+				+ ", orderDate=" + orderDate;
 	}
+
+	
+	
 	
 }

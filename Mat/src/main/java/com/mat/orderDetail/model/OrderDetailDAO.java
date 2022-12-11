@@ -37,11 +37,11 @@ public class OrderDetailDAO {
 	
 	
 	//OrderDetail Insert Method
-	public int insertOrderDetail(String orderNum, String id, String storeName, String menuNum, String menuName, String price, String menuQuantity) {
+	public int insertOrderDetail(String orderNum, String id, String storeNum, String storeName, String menuNum, String menuName, String price, String menuQuantity) {
 
 		int result = 0;
 		
-		String sql = "insert into ORDERDETAIL values(orderDetail_seq.nextval, ?, ?, ?, ?, ?, ?, ?, sysdate)";
+		String sql = "insert into ORDERDETAIL values(orderDetail_seq.nextval, ?, ?, ?, ?, ?, ?, ?, sysdate, ?)";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -56,7 +56,8 @@ public class OrderDetailDAO {
 			pstmt.setString(5, menuName);
 			pstmt.setString(6, price);
 			pstmt.setString(7, menuQuantity);
-
+			pstmt.setString(8, storeNum);
+			
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -88,6 +89,7 @@ public class OrderDetailDAO {
 				
 				String orderDetailNum = rs.getString("orderDetailNum");
 				String id = rs.getString("id");
+				String storeNum = rs.getString("storeNum");
 				String storeName = rs.getString("storeName");
 				String menuNum = rs.getString("menuNum");
 				String menuName = rs.getString("menuName");
@@ -95,8 +97,8 @@ public class OrderDetailDAO {
 				String menuQuantity = rs.getString("menuQuantity");
 				Timestamp orderDate = rs.getTimestamp("orderDate");
 				
-				OrderDetailVO vo = new OrderDetailVO(orderDetailNum, orderNum, id, storeName,
-						menuNum, menuName, price, menuQuantity, orderDate);
+				OrderDetailVO vo = new OrderDetailVO(orderDetailNum, orderNum, id, storeNum,
+						storeName, menuNum, menuName, price, menuQuantity, orderDate);
 				list.add(vo);
 			}
 

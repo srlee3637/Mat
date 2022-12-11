@@ -32,7 +32,7 @@
 			</tbody>
 		</table>
 		
-		<input type="button" value="즐겨찾기 추가" class="btn btn-default" onclik="location.href='store_order.store'">
+		<input type="button" value="즐겨찾기 추가" class="btn btn-default" onclik="location.href='store_detail.store'">
 
 		<br>
 		<h3>가게 메뉴</h3>
@@ -49,7 +49,7 @@
 				<tr>
 					<td align="center">${vo.menuName }</td>
 					<td align="center">${vo.price }</td>
-					<td align="center"><input type="text" name="cnt${s.count }" placeholder="수량 입력" class="form-control"></td>
+					<td align="center"><input type="text" name="cnt${s.count }" value="0" class="form-control"></td>
 				</tr>
 				</c:forEach>
 			</tbody>

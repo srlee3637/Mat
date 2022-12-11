@@ -54,7 +54,7 @@ public class OrderServiceImpl implements OrderService{
 				String menuName = menuList.get(i-1).getMenuName();
 				String price = Integer.toString(menuList.get(i-1).getPrice());
 
-				int result = orderDAO.insertOrder(id, storeName, menuNum, menuName, price, menuCnt);
+				int result = orderDAO.insertOrder(id, storeNum, storeName, menuNum, menuName, price, menuCnt);
 
 				break;
 			}
@@ -72,7 +72,7 @@ public class OrderServiceImpl implements OrderService{
 			String menuName = menuList.get(i-1).getMenuName();
 			String price = Integer.toString(menuList.get(i-1).getPrice());
 
-			int result = orderDetailDAO.insertOrderDetail(lastOrderNum, id, storeName, menuNum, menuName, price, menuQuantity);
+			int result = orderDetailDAO.insertOrderDetail(lastOrderNum, id, storeNum, storeName, menuNum, menuName, price, menuQuantity);
 		}
 		
 		ArrayList<OrderDetailVO> list = orderDetailDAO.getList(lastOrderNum);

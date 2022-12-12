@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import com.mat.util.JDBCUtil;
@@ -422,6 +423,49 @@ public class StoreDAO {
 		}
 
 		return vo;
+	}
+	
+	
+	//게시글 제목 검색 메서드
+	public ArrayList<StoreVO> search(String word) {
+
+		ArrayList<StoreVO> list = new ArrayList<>();
+
+		String sql = "select * from STORE where storeName like ?";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			conn = DriverManager.getConnection(url, uid, upw);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+word+"%");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+
+				int storeNum = rs.getInt("storeNum");
+				int locationType = rs.getInt("locationType");
+				String storeName = rs.getString("storeName");
+				String storeAddress = rs.getString("storeAddress");
+				String repMenu = rs.getString("repMenu");
+				int price = rs.getInt("price");
+				String contact = rs.getString("contact");
+				String category = rs.getString("category");
+				int priceRangeType2 = rs.getInt("priceRangeType");
+				
+				StoreVO vo = new StoreVO(storeNum, locationType, storeName,
+						storeAddress, repMenu, price, contact, category, priceRangeType2);
+				list.add(vo);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+
+		return list;
 	}
 
 

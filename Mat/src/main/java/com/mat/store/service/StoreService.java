@@ -36,4 +36,7 @@ public interface StoreService {
 	//가게 모든 메뉴 불러오는 메서드
 	public ArrayList<MenuVO> getMenu(HttpServletRequest request, HttpServletResponse response);
 	
+	//게시글 제목 검색 메서드
+	public ArrayList<StoreVO> search(HttpServletRequest request, HttpServletResponse response);
+	
 }

@@ -54,6 +54,18 @@
 				</tr>
 				</c:forEach>
 			</tbody>
+			<tbody>
+				<tr>
+					<td colspan="4" align="center">
+						<form action="../store/store_search.store" class="form-inline" >
+						  <div class="form-group">
+						    <input type="text" name="word" placeholder="가게 이름" class="form-control" >
+						  	<input type="submit" value="검색" class="btn btn-default">
+						  </div>
+						</form> 
+					</td>
+				</tr>
+			</tbody>				
 		</table>
 		
 	</div>

@@ -30,7 +30,7 @@
 			</tbody>
 		</table>
 		
-		<input type="button" value="즐겨찾기 추가" class="btn btn-default" onclik="location.href='store_order.store'">
+		<input type="button" value="즐겨찾기 추가" class="btn btn-default" onclick="location.href='store_order.store'">
 		<input type="hidden" name="storeNum" value="${storeVO.storeNum }">
 		
 		<br>

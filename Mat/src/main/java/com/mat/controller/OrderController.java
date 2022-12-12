@@ -9,7 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.mat.favorite.model.FavoritesDAO;
+import com.mat.menu.model.MenuVO;
 import com.mat.order.model.OrderVO;
 import com.mat.order.service.OrderService;
 import com.mat.order.service.OrderServiceImpl;
@@ -17,6 +20,8 @@ import com.mat.orderDetail.model.OrderDetailVO;
 import com.mat.store.model.StoreVO;
 import com.mat.store.service.StoreService;
 import com.mat.store.service.StoreServiceImpl;
+import com.mat.user.service.UserService;
+import com.mat.user.service.UserServiceImpl;
 
 @WebServlet("*.order")
 public class OrderController extends HttpServlet {
@@ -47,6 +52,9 @@ public class OrderController extends HttpServlet {
 
 		OrderService orderService = new OrderServiceImpl();
 		StoreService storeService = new StoreServiceImpl();
+		UserService userService = new UserServiceImpl();
+		FavoritesDAO fdao = FavoritesDAO.getInstance();
+
 
 
 		if(command.equals("/order/order_complete.order")) {
@@ -75,7 +83,31 @@ public class OrderController extends HttpServlet {
 			ArrayList<OrderDetailVO> list = orderService.getOrderDetail(request, response);
 			request.setAttribute("list", list);
 			
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("user_id");
+			String storeNum = request.getParameter("storeNum");
+			int result = fdao.storeCheck(storeNum,id);
+			request.setAttribute("result", result);
+			
 			request.getRequestDispatcher("order_detail.jsp").forward(request, response);
+			
+		}else if(command.equals("/order/favoriteForm.order")) {//즐겨찾기 추가
+			
+			
+			
+			int result = userService.insertFavor(request, response);
+			System.out.println(result);
+			request.setAttribute("reuslt", result);
+			
+			StoreVO storeVO = storeService.selectStore(request, response);
+			request.setAttribute("storeVO", storeVO);
+			ArrayList<OrderDetailVO> list = orderService.getOrderDetail(request, response);
+			request.setAttribute("list", list);
+			
+			
+			response.sendRedirect("order_detail.order");
+//			request.getRequestDispatcher("order_detail.jsp").forward(request, response);//파일의 경로 
+
 			
 		}
 

@@ -14,11 +14,10 @@
 			
 			<tbody>
 				<c:forEach var="vo" items="${list }" varStatus="s">
+					<input type="hidden" name="favoritesNum" value="${vo.favoritesNum }">
 				<tr>
 					<td>${s.count }</td>
-					<td>${vo.favoritesNum }</td>
-					<td>${vo.storeName }</td>
-					<!-- a태그를 통하여 하이퍼링크를 생성하고 다음 페이지에서 필요한 값도 실어보낸다. -->
+					<td><a href="../store/store_detail.store?storeNum=${vo.storeNum }">${vo.storeName }</a></td>
 					<td>${vo.repMenu }</td>
 					<td>${vo.price }</td>
 					<td>${vo.category }</td>

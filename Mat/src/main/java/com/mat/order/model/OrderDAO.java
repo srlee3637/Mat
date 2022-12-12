@@ -75,28 +75,30 @@ public class OrderDAO {
 
 		ArrayList<OrderVO> list = new ArrayList<>();
 
-		String sql = "select * from orders where id = ? order by orderNum desc";
+		String sql = "select * from ORDERS  where id = ? order by orderNum desc";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			conn = DriverManager.getConnection(url, uid, upw);
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
+			
 
 			while(rs.next()) {
 				
 				String orderNum = rs.getString("orderNum");
-				String id2 = rs.getString("id2");
-				String storeNum = rs.getString("storeNum");
+				
 				String storeName = rs.getString("storeName");
 				String menuNum = rs.getString("menuNum");
 				String menuName = rs.getString("menuName");
 				String price = rs.getString("price");
 				String menuCnt = rs.getString("menuCnt");
 				Timestamp orderDate = rs.getTimestamp("orderDate");
+				String storeNum = rs.getString("storeNum");
 				
-				OrderVO vo = new OrderVO(orderNum, id2, storeNum, storeName,
+				OrderVO vo = new OrderVO(orderNum, id, storeNum, storeName,
 						menuNum, menuName, price, menuCnt, orderDate);
 				list.add(vo);
 			}

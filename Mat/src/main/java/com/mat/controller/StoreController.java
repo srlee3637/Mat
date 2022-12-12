@@ -126,7 +126,23 @@ public class StoreController extends HttpServlet {
 			request.setAttribute("storeList", storeList);
 			
 			request.getRequestDispatcher("store_search.jsp").forward(request, response);
+		}else if(command.equals("/store/favoriteForm.store")) {//즐겨찾기 추가
+			
+			
+			
+			int result = userService.insertFavor(request, response);
+			System.out.println(result);
+			request.setAttribute("reuslt", result);
+			
+			StoreVO storeVO = storeService.selectStore(request, response);
+			request.setAttribute("storeVO", storeVO);
+			ArrayList<MenuVO> menuList = storeService.getMenu(request, response);
+			request.setAttribute("menuList", menuList);
+			
+			request.getRequestDispatcher("../store/store_detail.jsp").forward(request, response);//파일의 경로 
+
 		}
+		
 
 	}
 

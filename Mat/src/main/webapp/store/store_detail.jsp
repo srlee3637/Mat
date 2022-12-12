@@ -35,7 +35,7 @@
 		</table>
 		
 		
-		<input type="button" value="${result eq 1 ? '즐겨찾기 삭제' : '즐겨찾기 추가'}"  class="btn btn-default" onclick="location.href='../user/favoriteForm.user?storeNum=${storeVO.storeNum }'">
+		<input type="button" value="${result eq 1 ? '즐겨찾기 삭제' : '즐겨찾기 추가'}"  class="btn btn-default" onclick="location.href='favoriteForm.store?storeNum=${storeVO.storeNum }'">
 	
 		
 		

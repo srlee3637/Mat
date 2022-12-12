@@ -21,9 +21,8 @@
 				<c:forEach var="vo" items="${orderList }" varStatus="s">
 				<tr>
 					<td align="center">${s.count }</td>
-					<td align="center">${vo.orderNum }</td>
-					<td align="center"><a href="order_detail.order?orderNum=${vo.orderNum }&storeNum=${vo.storeNum }">${vo.storeName }</a></td>
-					<td>${vo.menuName } 외 ${vo.menuCnt }개</td>
+					<td align="center"><a href="../store/store_detail.store?storeNum=${vo.storeNum }">${vo.storeName }</a></td>
+					<td align="center"><a href="order_detail.order?orderNum=${vo.orderNum }&storeNum=${vo.storeNum }">${vo.menuName } 외 ${vo.menuCnt }개</a></td>
 					<td>${vo.orderDate }</td>
 				</tr>
 				</c:forEach>

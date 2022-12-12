@@ -6,7 +6,7 @@
 
 <%@ include file="../include/header.jsp" %>
 	
-
+<section class="banner-area text-center">
 	<div class="container">
 		
 
@@ -38,6 +38,7 @@
 		
 		</table>
 	</div>
+	</section>
 
 
 

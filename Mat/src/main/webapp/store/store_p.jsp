@@ -7,7 +7,7 @@
 %>
 
 <%@ include file="../include/header.jsp" %>
-	
+<section class="banner-area text-center">	
 	<div class="container">
 		
 		<h3>음식 카테고리</h3>		
@@ -60,5 +60,5 @@
 		</table>
 		
 	</div>
-		
+</section>		
 <%@ include file="../include/footer.jsp" %>

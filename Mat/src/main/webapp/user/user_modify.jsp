@@ -3,6 +3,7 @@
 <%@include file="../include/header.jsp"%>
 <%@taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
 
+<section class="banner-area text-center">
 <div align="center">
 	<form action="updateForm.user" method="post">
 		<span style="color: red;">${msg }</span>
@@ -45,6 +46,7 @@
 
 	</form>
 </div>
+</section>
 
 
 <%@include file="../include/footer.jsp"%>

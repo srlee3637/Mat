@@ -2,124 +2,101 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-idth, initial-scale=1">
-   
-	
-    <title>Welcome to MyWorld</title>
+    <!-- Page Title -->
+    <title>JMT 배달</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/logo/favicon.png" type="image/x-icon">
 
-    <!-- Custom CSS -->
-    <link href="${pageContext.request.contextPath}/css/business-casual.css" rel="stylesheet">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
-	
-	<!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-    <script>
-    $('.carousel').carousel({
-        interval: 2000 //changes the speed
-    }) 
-    </script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/animate-3.7.0.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap-4.1.3.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
     
-	<style>
+    <style>
+	table{color:white;}
+	span{color:white;}
+	a{color:orange;  font-weight: bolder; }
 	
-	.abc {
-		position: sticky;
-		top: 0px;
-		width: 100%; 
-		z-index: 10;
-	}
-	
-	a:link {
-  	color : black;
-	}
-	a:visited {
-  	color : gray;
-	}
-	a:hover {
-  	color : blue;
-	}
-	a:active {
-  	color : green
+	h3{color:white; font-weight: bolder;}
+	h4{
+	font-weight: bolder;
 	}
 	</style>
-    
-    
 </head>
-
 <body>
-	<!-- header -->
-	
-	<div class="brand">JMT 배달</div>        
-    <div class="address-bar">Welcome to My배달</div>
+    <!-- Preloader Starts -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+    <!-- Preloader End -->
 
-    
-    <nav class="navbar navbar-default abc" role="navigation">
+    <!-- Header Area Starts -->
+	<header class="header-area">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                
-                <a class="navbar-brand" href="/hong">JOLA BBARUN BADAL</a>
-            </div>
-           
-           
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                	
-                    <li>
-                        <a href="${pageContext.request.contextPath}/user/user_search.user">검색</a>
-                    </li>
-             
-                    
-                    <!--조건에 따른 표시  -->
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="logo-area">
+                        <a href="${pageContext.request.contextPath}/MainPage.jsp"><img src="${pageContext.request.contextPath}/assets/images/logo/logo2.png" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="custom-navbar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>  
+                    <div class="main-menu">
+                        <ul>
+                            <li class="active"><a href="${pageContext.request.contextPath}/MainPage.main">home</a></li>
+                            <li><a href="${pageContext.request.contextPath}/store/store_main.store">search</a></li>
+                            
+                            <!--조건에 따른 표시  -->
                     <c:if test="${sessionScope.user_id==null}">
                     <li>
-                    
-                        <a href="${pageContext.request.contextPath}/user/user_login.user" >로그인</a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/user/user_mypage.user" style="color:blue">마이페이지</a>
-                    </li>
-                     <li>
-                        <a href="${pageContext.request.contextPath}/user/user_favorite.user" style="color:red">즐겨찾기</a>
+                        <a href="${pageContext.request.contextPath}/user/user_login.user">LOGIN</a>
                     </li>
                     </c:if>
                     
                     <c:if test="${sessionScope.user_id!=null}">
                     <li>
-                        <a href="${pageContext.request.contextPath}/user/user_logout.user" >로그아웃</a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/user/user_mypage.user" style="color:blue" >마이페이지</a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/user/user_favorite.user" style="color:red">즐겨찾기</a>
+                        <a href="${pageContext.request.contextPath}/user/user_mypage.user">MYPAGE</a>
+                        <ul class="sub-menu">
+                        <li>
+                        <a href="${pageContext.request.contextPath}/user/user_modify.user">MODIFY</a>
+                        </li>
+                        <li>
+                        <a href="${pageContext.request.contextPath}/user/user_logout.user">LOGOUT</a>
+                        </li>
+                        <li>
+                        <a href="${pageContext.request.contextPath}/order/order_history.order">ORDERLIST</a>
+                        </li>
+                        </ul>
                     </li>
                   	</c:if>
-                    
-                </ul>
+                            	
+                               
+                           
+                            <li><a href="${pageContext.request.contextPath}/user/user_favorite.user">Favorites</a></li>
+                          
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
-            
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
-    </nav>
- 	<!-- end header -->
+    </header>
+    
+    
+    <!-- Header Area End -->
+
+    

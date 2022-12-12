@@ -10,18 +10,18 @@
 	
 %>
 <%@ include file="../include/header.jsp" %>
-	
+	<section class="banner-area text-center">        
 	<div class="container">
 		<h3>음식 카테고리 및 가격대</h3>
 		
 		<table class="table table-bordered">
 				<tr>
-					<td colspan=6 align="center">음식 카테고리</td>
+					<th colspan=6 align="center"><h4>음식 카테고리</h4></th>
 				</tr>
 
 				<tr>
 				<c:forEach var="vo" items="${categoryList }" varStatus="s">
-					<td><a href="store_c.store?categoryType=${vo.categoryType }">${vo.categoryType }</a></td>
+					<td><h4><a href="store_c.store?categoryType=${vo.categoryType }">${vo.categoryType }</a></h4></td>
 				</c:forEach>
 				</tr>
 		</table>
@@ -33,7 +33,7 @@
 			
 				<tr>
 				<c:forEach var="vo" items="${priceRangeList }" varStatus="s">
-					<td><a href="store_p.store?priceRangeType=${vo.priceRangeType }">${vo.priceRange }</a></td>
+					<td><h4><a href="store_p.store?priceRangeType=${vo.priceRangeType }">${vo.priceRange }</a></h4></td>
 				</c:forEach>
 				</tr>
 		</table>
@@ -75,5 +75,5 @@
 		</table>
 		
 	</div>
-		
+	</section>
 <%@ include file="../include/footer.jsp" %>

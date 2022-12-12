@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
 
-	
+	<section class="banner-area text-center">
 	<div class="container">
 		
 		<form action="${pageContext.request.contextPath}/order/order_complete.order" class="form-inline" >
@@ -80,7 +80,7 @@
 		</table>
 		</form>
 	</div>
-	
+</section>	
 	
 <script>
 	var msg = '${msg}';

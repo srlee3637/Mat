@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
-<section>
-	<div align="center">
+
+
+<section class="banner-area text-center">        
+<div class="container" align="center">
 		<form action="loginForm.user" method="post">
 			<span style="color: red;">${msg }</span>
 			<h3>로그인</h3>
@@ -19,7 +21,7 @@
 					<td><input type="password" name="pw" size="20"></td>
 				</tr>
 			</table>
-
+	<br>
 			<input type="submit" value="로그인"  class="btn btn-default"> 
 			<input type="button" value="회원가입" class="btn btn-default" onclick="location.href='user_join.user'">
 

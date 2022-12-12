@@ -172,7 +172,7 @@ public class UserController extends HttpServlet {
 			request.getRequestDispatcher("user_delete.jsp").forward(request, response);
 
 			
-		}else if(command.equals("/user/user_logout.user")) {//회원 탈퇴 페이지 
+		}else if(command.equals("/user/user_logout.user")) {//로그아웃 
 
 			session = request.getSession();
 			session.invalidate();//세션 무효화

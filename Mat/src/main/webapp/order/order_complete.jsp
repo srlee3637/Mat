@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
-	
+	<section class="banner-area text-center">
 	<div class="container">
 		<h3>주문 가게 정보</h3>
 		
@@ -68,7 +68,6 @@
 			</tbody>		
 		</table>
 	</div>
-		
-		
+</section>		
 		
 <%@ include file="../include/footer.jsp" %>

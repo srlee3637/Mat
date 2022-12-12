@@ -4,7 +4,7 @@
 
 
 
-<section>
+<section class="banner-area text-center">
 	<div align="center">
 		<h3>회원가입</h3>
 

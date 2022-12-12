@@ -6,7 +6,7 @@
 	String categoryType = request.getParameter("categoryType");
 %>
 <%@ include file="../include/header.jsp" %>
-	
+	<section class="banner-area text-center">
 	<div class="container">
 		
 		<h3>음식 가격대</h3>
@@ -59,5 +59,5 @@
 		</table>
 		
 	</div>
-		
+	</section>	
 <%@ include file="../include/footer.jsp" %>

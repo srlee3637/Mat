@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
 
-<section>
+<section class="banner-area text-center">
 	<div align="center">
 			${sessionScope.user_id }	
 			<a href="../order/order_history.order">[나의주문내역]</a>

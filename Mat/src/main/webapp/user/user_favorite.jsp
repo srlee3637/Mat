@@ -11,6 +11,15 @@
 		
 
 		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th align="center">연번</th>
+					<th align="center">가게 이름</th>
+					<th align="center">대표 메뉴</th>
+					<th align="center">가격</th>
+					<th align="center">카테고리</th>
+				</tr>
+			</thead>
 			
 			<tbody>
 				<c:forEach var="vo" items="${list }" varStatus="s">
@@ -21,7 +30,6 @@
 					<td>${vo.repMenu }</td>
 					<td>${vo.price }</td>
 					<td>${vo.category }</td>
-					<td>${vo.id }</td>
 				</tr>
 				</c:forEach>
 			</tbody>

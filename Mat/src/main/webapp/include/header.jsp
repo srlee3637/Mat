@@ -59,7 +59,7 @@
                     <div class="main-menu">
                         <ul>
                             <li class="active"><a href="${pageContext.request.contextPath}/MainPage.main">home</a></li>
-                            <li><a href="${pageContext.request.contextPath}/store/store_main.store">search</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/user_search.user">search</a></li>
                             
                             <!--조건에 따른 표시  -->
                     <c:if test="${sessionScope.user_id==null}">

@@ -101,12 +101,12 @@ public class OrderController extends HttpServlet {
 			
 			StoreVO storeVO = storeService.selectStore(request, response);
 			request.setAttribute("storeVO", storeVO);
+			
 			ArrayList<OrderDetailVO> list = orderService.getOrderDetail(request, response);
 			request.setAttribute("list", list);
 			
 			
-			response.sendRedirect("order_detail.order");
-//			request.getRequestDispatcher("order_detail.jsp").forward(request, response);//파일의 경로 
+			request.getRequestDispatcher("order_detail.jsp").forward(request, response);//파일의 경로 
 
 			
 		}

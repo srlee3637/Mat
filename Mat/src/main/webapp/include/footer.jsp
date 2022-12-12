@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; By Park 2018.XX.XX~</p>
+                    <p>Copyright &copy; By KIM LEE AHN ~</p>
                 </div>
             </div>
         </div>

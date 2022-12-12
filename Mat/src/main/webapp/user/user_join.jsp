@@ -15,15 +15,15 @@
 			<table border="1" >
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="id" placeholder="4~8글자 영문숫자" size="20"
-						pattern="\w{4,8}" required="required"></td>
+					<td><input type="text" name="id" placeholder="3~8글자 영문숫자" size="20"
+						pattern="\w{3,8}" required="required"></td>
 				</tr>
 
 
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pw" placeholder="4~8글자 영문숫자" size="20"
-						pattern="\w{4,8}" required="required"></td>
+					<td><input type="password" name="pw" placeholder="3~8글자 영문숫자" size="20"
+						pattern="\w{3,8}" required="required"></td>
 				</tr>
 
 				<tr>

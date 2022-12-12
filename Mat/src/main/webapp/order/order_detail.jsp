@@ -30,7 +30,8 @@
 			</tbody>
 		</table>
 		
-		<input type="button" value="${result eq 1 ? '즐겨찾기 삭제' : '즐겨찾기 추가'}"  class="btn btn-default" onclick="location.href='favoriteForm.order?storeNum=${storeVO.storeNum }'">
+		<input type="button" value="${result eq 1 ? '즐겨찾기 삭제' : '즐겨찾기 추가'}"  class="btn btn-default" 
+		onclick="location.href='favoriteForm.order?orderNum=${orderNum }&storeNum=${storeVO.storeNum }'">
 		<input type="hidden" name="storeNum" value="${storeVO.storeNum }">
 		
 		<br>

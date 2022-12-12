@@ -86,7 +86,7 @@ public class OrderServiceImpl implements OrderService{
 	public ArrayList<OrderDetailVO> getOrderDetail(HttpServletRequest request, HttpServletResponse response) {
 		
 		String orderNum = request.getParameter("orderNum");
-		
+		request.setAttribute("orderNum",  orderNum);
 		ArrayList<OrderDetailVO> list = orderDetailDAO.getList(orderNum); 
 		
 		return list;

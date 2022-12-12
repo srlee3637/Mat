@@ -97,17 +97,40 @@ public class FavoritesDAO {
 				e.printStackTrace();
 
 			} finally {
-				try {
-					conn.close();
-					pstmt.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				JDBCUtil.close(conn, pstmt, rs);
 			}
 			
 		}
 		
-		
+		//Delete Method of Favorites
+		public int deleteFavor(String storeNum) {
+
+			int result = 0;
+
+			String sql = "delete from favorites where storeNum = '" + storeNum + "'";
+
+			
+
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+
+				conn = DriverManager.getConnection(URL, UID, UPW);
+
+				pstmt = conn.prepareStatement(sql);
+
+				result = pstmt.executeUpdate();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+
+			} finally {
+				JDBCUtil.close(conn, pstmt, rs);
+
+			}
+
+			return result;
+		}
+
 		
 		
 		
@@ -115,7 +138,7 @@ public class FavoritesDAO {
 
 			ArrayList<FavoritesVO> list = new ArrayList<>();
 
-			String sql = "select * from favorites where id = ?";
+			String sql = "select * from favorites where id = ? order by storeName";
 
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");

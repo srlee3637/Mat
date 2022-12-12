@@ -98,39 +98,21 @@ public class OrderController extends HttpServlet {
 			String storeNum = request.getParameter("storeNum");
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("user_id");
+			int result = userService.insertFavor(request, response);
 			
-			
-			
-			int result = fdao.storeCheck(storeNum, id);
-			System.out.println(result);
-			request.setAttribute("reuslt", result);
-			
-			StoreVO storeVO = storeService.selectStore(request, response);
-			request.setAttribute("storeVO", storeVO);
-			
-			ArrayList<OrderDetailVO> list = orderService.getOrderDetail(request, response);
-			request.setAttribute("list", list);
-			
-			
-			request.getRequestDispatcher("order_detail.jsp").forward(request, response);//파일의 경로 
+			response.sendRedirect("order_detail.order?storeNum=" + storeNum + "&orderNum=" + request.getParameter("orderNum") );
 
 			
 		}else if(command.equals("/order/favoriteDeleteForm.order")) {//즐겨찾기 삭제
 			
+			String storeNum = request.getParameter("storeNum");
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("user_id");
+			int result = userService.deleteFavor(request, response);
+			
+			response.sendRedirect("order_detail.order?storeNum=" + storeNum + "&orderNum=" + request.getParameter("orderNum") );
 			
 			
-			int result = userService.insertFavor(request, response);
-			System.out.println(result);
-			request.setAttribute("reuslt", result);
-			
-			StoreVO storeVO = storeService.selectStore(request, response);
-			request.setAttribute("storeVO", storeVO);
-			
-			ArrayList<OrderDetailVO> list = orderService.getOrderDetail(request, response);
-			request.setAttribute("list", list);
-			
-			
-			request.getRequestDispatcher("order_detail.jsp").forward(request, response);//파일의 경로 
 
 			
 		}

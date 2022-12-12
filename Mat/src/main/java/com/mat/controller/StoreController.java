@@ -105,6 +105,7 @@ public class StoreController extends HttpServlet {
 			
 			StoreVO storeVO = storeService.selectStore(request, response);
 			request.setAttribute("storeVO", storeVO);
+			
 			ArrayList<MenuVO> menuList = storeService.getMenu(request, response);
 			request.setAttribute("menuList", menuList);
 			
@@ -112,6 +113,7 @@ public class StoreController extends HttpServlet {
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("user_id");
 			String storeNum = request.getParameter("storeNum");
+			//
 			int result = fdao.storeCheck(storeNum,id);
 			request.setAttribute("result", result);
 			System.out.println(result);
@@ -132,24 +134,19 @@ public class StoreController extends HttpServlet {
 			String storeNum = request.getParameter("storeNum");
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("user_id");
+			int result = userService.insertFavor(request, response);
 			
+			response.sendRedirect("store_detail.store?storeNum=" + storeNum + "&orderNum=" + request.getParameter("orderNum") );
 			
-			
-			int result = fdao.storeCheck(storeNum, id);
-			System.out.println(result);
-			request.setAttribute("reuslt", result);
-			
-			StoreVO storeVO = storeService.selectStore(request, response);
-			request.setAttribute("storeVO", storeVO);
-			ArrayList<MenuVO> menuList = storeService.getMenu(request, response);
-			request.setAttribute("menuList", menuList);
-			
-			request.getRequestDispatcher("store_detail.store").forward(request, response);//파일의 경로 
-
 		}else if(command.equals("/store/favoriteDeleteForm.store")) {//즐겨찾기 삭제
 			
 			
+			String storeNum = request.getParameter("storeNum");
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("user_id");
+			int result = userService.deleteFavor(request, response);
 			
+			response.sendRedirect("store_detail.store?storeNum=" + storeNum + "&orderNum=" + request.getParameter("orderNum") );
 			
 
 		}

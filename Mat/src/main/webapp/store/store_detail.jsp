@@ -37,7 +37,7 @@
 		
 		<c:if test="${result eq 1}">
 		<input type="button" value="즐겨찾기 삭제"  class="btn btn-default" 
-		onclick="location.href='favoriteDeleteForm.store?orderNum=${orderNum }&storeNum=${storeVO.storeNum }'">
+		onclick="location.href='favoriteDeleteForm.store? =${orderNum }&storeNum=${storeVO.storeNum }'">
 		</c:if>
 		
 		<c:if test="${result != 1}">

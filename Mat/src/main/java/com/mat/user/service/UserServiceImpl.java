@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService{
 	//컨트롤러의 역할을 분담
 	//가입처리
 
-	UserDAO dao = UserDAO.getInstance();
-	FavoritesDAO fdao = FavoritesDAO.getInstance();
+	UserDAO userDAO = UserDAO.getInstance();
+	FavoritesDAO favoritesDAO = FavoritesDAO.getInstance();
 
 	public int join(HttpServletRequest request, HttpServletResponse response) {
 		String id =request.getParameter("id");
@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
 		String email = request.getParameter("email");
 
 		//아이디 or email 중복 검사 -> 가입 
-		int result = dao.idCheck(id, email);
+		int result = userDAO.idCheck(id, email);
 		System.out.println(result);
 		if(result>=1) {//중복
 			return 1; //중복 의미 반환
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
 		}else {
 			//중복x ->가입
 			UserVO vo = new UserVO(id,pw,userAddress,contact,email);
-			dao.join(vo);
+			userDAO.join(vo);
 		}
 		return 0;
 	}
@@ -47,20 +47,20 @@ public class UserServiceImpl implements UserService{
 		String id =request.getParameter("id");
 		String pw = request.getParameter("pw");
 
-		UserVO vo = dao.login(id, pw);
+		UserVO vo = userDAO.login(id, pw);
 
 
 		return vo;
 	}
 
 	@Override
-	public UserVO getInfo(HttpServletRequest request, HttpServletResponse response) {
+	public UserVO getInfoUser(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();//자바에서 현재 세션 얻는 방법
 
 		String id = (String)session.getAttribute("user_id");
 
 
-		UserVO vo = dao.getInfo(id);
+		UserVO vo = userDAO.getInfo(id);
 
 
 
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int update(HttpServletRequest request, HttpServletResponse response) {
+	public int updateUser(HttpServletRequest request, HttpServletResponse response) {
 
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int delete(HttpServletRequest request, HttpServletResponse response) {
+	public int deleteUser(HttpServletRequest request, HttpServletResponse response) {
 		//id가 필요
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("user_id");
@@ -92,9 +92,9 @@ public class UserServiceImpl implements UserService{
 
 
 		int result = 0;
-		UserVO vo = dao.login(id,pw);
+		UserVO vo = userDAO.login(id,pw);
 		if(vo != null) {
-			result = dao.delete(id);
+			result = userDAO.delete(id);
 
 		}
 		if(result==1) {//삭제성공
@@ -108,12 +108,12 @@ public class UserServiceImpl implements UserService{
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("user_id");
 		String storeNum = request.getParameter("storeNum");
-		int result = fdao.storeCheck(storeNum, id);
+		int result = favoritesDAO.storeCheck(storeNum, id);
 		if(result>=1) {//중복
 			return 1; //중복 의미 반환
 
 		}else {
-			fdao.insertFavorMain(storeNum,id);
+			favoritesDAO.insertFavorMain(storeNum,id);
 		}
 		return 0;
 		
@@ -126,9 +126,19 @@ public class UserServiceImpl implements UserService{
 		
 		String id = (String)session.getAttribute("user_id");
 		
-		ArrayList<FavoritesVO> list = fdao.getFavorites(id);
+		ArrayList<FavoritesVO> list = favoritesDAO.getFavorites(id);
 		
 		return list;
+	}
+
+	@Override
+	public int deleteFavor(HttpServletRequest request, HttpServletResponse response) {
+		
+		String storeNum = request.getParameter("storeNum");
+		int result = favoritesDAO.deleteFavor(storeNum);
+		
+		
+		return result;
 	}
 	
 	

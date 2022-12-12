@@ -131,7 +131,7 @@ public class UserController extends HttpServlet {
 			
 		}else if(command.equals("/user/updateForm.user")) {//즐겨찾기
 
-			int result = userService.update(request, response);
+			int result = userService.updateUser(request, response);
 			if(result==1) {//업데이트 성공
 				
 				//response.sendRedirect("user_mypage.user");
@@ -152,7 +152,7 @@ public class UserController extends HttpServlet {
 			
 		}else if(command.equals("/user/user_modify.user")) {//즐겨찾기
 
-			UserVO vo =  userService.getInfo(request, response);
+			UserVO vo =  userService.getInfoUser(request, response);
 			request.setAttribute("vo", vo);
 		
 			request.getRequestDispatcher("user_modify.jsp").forward(request, response);
@@ -160,7 +160,7 @@ public class UserController extends HttpServlet {
 			
 		}else if(command.equals("/user/deleteForm.user")) {//회원 탈퇴 기능
 
-			int result = userService.delete(request, response);
+			int result = userService.deleteUser(request, response);
 			if(result == 1) {
 				response.sendRedirect(path + "/MainPage.main");
 			}else {

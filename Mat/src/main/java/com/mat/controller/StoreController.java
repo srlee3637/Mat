@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mat.category.model.CategoryVO;
+import com.mat.favorite.model.FavoritesDAO;
 import com.mat.menu.model.MenuVO;
 import com.mat.order.model.OrderDAO;
 import com.mat.order.service.OrderService;
@@ -18,6 +20,8 @@ import com.mat.priceRange.model.PriceRangeVO;
 import com.mat.store.model.StoreVO;
 import com.mat.store.service.StoreService;
 import com.mat.store.service.StoreServiceImpl;
+import com.mat.user.service.UserService;
+import com.mat.user.service.UserServiceImpl;
 
 @WebServlet("*.store")
 public class StoreController extends HttpServlet {
@@ -47,7 +51,9 @@ public class StoreController extends HttpServlet {
 		System.out.println("요청 경로 : " + command);
 
 		StoreService storeService = new StoreServiceImpl();
+		UserService userService = new UserServiceImpl();
 		OrderDAO orderDAO = OrderDAO.getInstance();
+		FavoritesDAO fdao = FavoritesDAO.getInstance();
 		
 		if(command.equals("/store/store_main.store")) {
 			
@@ -101,6 +107,15 @@ public class StoreController extends HttpServlet {
 			request.setAttribute("storeVO", storeVO);
 			ArrayList<MenuVO> menuList = storeService.getMenu(request, response);
 			request.setAttribute("menuList", menuList);
+			
+			
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("user_id");
+			String storeNum = request.getParameter("storeNum");
+			int result = fdao.storeCheck(storeNum,id);
+			request.setAttribute("result", result);
+			System.out.println(result);
+			
 			
 			request.getRequestDispatcher("store_detail.jsp").forward(request, response);
 		

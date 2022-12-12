@@ -3,7 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
-
+<%
+	String value ="";
+	String a = (String)request.getParameter("result");
+	if(a.equals("1")){
+		value ="즐겨찾기삭제";
+	}else{
+	value ="즐겨찾기추가";}
+%>
 	
 	<div class="container">
 		
@@ -35,7 +42,7 @@
 		</table>
 		
 		
-		<input type="button" value="즐겨찾기 추가" class="btn btn-default" onclick="location.href='../user/favoriteForm.user?storeNum=${storeVO.storeNum }'">
+		<input type="button" value=<%=value %>  class="btn btn-default" onclick="location.href='../user/favoriteForm.user?storeNum=${storeVO.storeNum }'">
 		
 		
 		

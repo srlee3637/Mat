@@ -112,8 +112,7 @@ public class UserController extends HttpServlet {
 			
 			int result = userService.insertFavor(request, response);
 			System.out.println(result);
-			session = request.getSession();
-			session.setAttribute("reuslt", result);
+			request.setAttribute("reuslt", result);
 			
 			StoreVO storeVO = storeService.selectStore(request, response);
 			request.setAttribute("storeVO", storeVO);

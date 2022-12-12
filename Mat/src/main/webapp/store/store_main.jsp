@@ -4,11 +4,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%
-	
-	
-	
-%>
 <%@ include file="../include/header.jsp" %>
 	<section class="banner-area text-center">        
 	<div class="container">

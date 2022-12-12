@@ -57,7 +57,7 @@ public class OrderController extends HttpServlet {
 
 
 
-		if(command.equals("/order/order_complete.order")) {
+		if(command.equals("/order/order_complete.order")) {//주문 완료 페이지
 			
 			StoreVO storeVO = storeService.selectStore(request, response);
 			request.setAttribute("storeVO", storeVO);
@@ -67,7 +67,7 @@ public class OrderController extends HttpServlet {
 			request.getRequestDispatcher("order_complete.jsp").forward(request, response);;
 			
 			
-		} else if(command.equals("/order/order_history.order")) {
+		} else if(command.equals("/order/order_history.order")) {//주문 기록 
 			
 			
 			ArrayList<OrderVO> orderList = orderService.getOrderList(request, response);
@@ -76,7 +76,7 @@ public class OrderController extends HttpServlet {
 			request.getRequestDispatcher("order_history.jsp").forward(request, response);
 		
 		
-		} else if(command.equals("/order/order_detail.order")) {
+		} else if(command.equals("/order/order_detail.order")) {//주문 상세내역 페이지
 			
 			StoreVO storeVO = storeService.selectStore(request, response);
 			request.setAttribute("storeVO", storeVO);
@@ -91,7 +91,31 @@ public class OrderController extends HttpServlet {
 			
 			request.getRequestDispatcher("order_detail.jsp").forward(request, response);
 			
-		}else if(command.equals("/order/favoriteForm.order")) {//즐겨찾기 추가
+		}else if(command.equals("/order/favoriteInsertForm.order")) {//즐겨찾기 추가
+			
+			
+			
+			String storeNum = request.getParameter("storeNum");
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("user_id");
+			
+			
+			
+			int result = fdao.storeCheck(storeNum, id);
+			System.out.println(result);
+			request.setAttribute("reuslt", result);
+			
+			StoreVO storeVO = storeService.selectStore(request, response);
+			request.setAttribute("storeVO", storeVO);
+			
+			ArrayList<OrderDetailVO> list = orderService.getOrderDetail(request, response);
+			request.setAttribute("list", list);
+			
+			
+			request.getRequestDispatcher("order_detail.jsp").forward(request, response);//파일의 경로 
+
+			
+		}else if(command.equals("/order/favoriteDeleteForm.order")) {//즐겨찾기 삭제
 			
 			
 			

@@ -11,7 +11,6 @@
 			<thead>
 				<tr>
 					<th align="center">연번</th>
-					<th align="center">주문 번호</th>
 					<th align="center">가게 이름</th>
 					<th align="center">주문 메뉴</th>
 					<th align="center">주문 날짜</th>

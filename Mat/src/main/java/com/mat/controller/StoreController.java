@@ -55,7 +55,7 @@ public class StoreController extends HttpServlet {
 		OrderDAO orderDAO = OrderDAO.getInstance();
 		FavoritesDAO fdao = FavoritesDAO.getInstance();
 		
-		if(command.equals("/store/store_main.store")) {
+		if(command.equals("/store/store_main.store")) {//가게 메인페이지
 			
 			ArrayList<StoreVO> storeList = storeService.selectJg(request, response);
 			request.setAttribute("storeList", storeList);
@@ -67,7 +67,7 @@ public class StoreController extends HttpServlet {
 			request.getRequestDispatcher("store_main.jsp").forward(request, response);
 			
 			
-		} else if(command.equals("/store/store_c.store")) {
+		} else if(command.equals("/store/store_c.store")) {//카테고리 한번에
 			
 			String categoryType = request.getParameter("categoryType");
 			request.setAttribute("categoryType", categoryType);
@@ -80,7 +80,7 @@ public class StoreController extends HttpServlet {
 			request.getRequestDispatcher("store_c.jsp").forward(request, response);
 			
 			
-		} else if(command.equals("/store/store_p.store")) {
+		} else if(command.equals("/store/store_p.store")) {//가격대 한번에
 			
 			String priceRangeType = request.getParameter("priceRangeType");
 			request.setAttribute("priceRangeType", priceRangeType);
@@ -93,7 +93,7 @@ public class StoreController extends HttpServlet {
 			request.getRequestDispatcher("store_p.jsp").forward(request, response);
 			
 			
-		} else if(command.equals("/store/store_cp.store")) {
+		} else if(command.equals("/store/store_cp.store")) {//카테고리 가격대 한번에
 			
 			ArrayList<StoreVO> storeList = storeService.selectJgCP(request, response);
 			request.setAttribute("storeList", storeList);
@@ -101,7 +101,7 @@ public class StoreController extends HttpServlet {
 			request.getRequestDispatcher("store_cp.jsp").forward(request, response);
 			
 			
-		} else if(command.equals("/store/store_detail.store")) {
+		} else if(command.equals("/store/store_detail.store")) {//가게 상세정보 페이지
 			
 			StoreVO storeVO = storeService.selectStore(request, response);
 			request.setAttribute("storeVO", storeVO);
@@ -120,17 +120,22 @@ public class StoreController extends HttpServlet {
 			request.getRequestDispatcher("store_detail.jsp").forward(request, response);
 		
 		
-		} else if(command.equals("/store/store_search.store")) {
+		} else if(command.equals("/store/store_search.store")) {//가게 검색
 			
 			ArrayList<StoreVO> storeList = storeService.search(request, response);
 			request.setAttribute("storeList", storeList);
 			
 			request.getRequestDispatcher("store_search.jsp").forward(request, response);
-		}else if(command.equals("/store/favoriteForm.store")) {//즐겨찾기 추가
+		}else if(command.equals("/store/favoriteInsertForm.store")) {//즐겨찾기 추가
+			
+			
+			String storeNum = request.getParameter("storeNum");
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("user_id");
 			
 			
 			
-			int result = userService.insertFavor(request, response);
+			int result = fdao.storeCheck(storeNum, id);
 			System.out.println(result);
 			request.setAttribute("reuslt", result);
 			
@@ -139,7 +144,13 @@ public class StoreController extends HttpServlet {
 			ArrayList<MenuVO> menuList = storeService.getMenu(request, response);
 			request.setAttribute("menuList", menuList);
 			
-			request.getRequestDispatcher("../store/store_detail.jsp").forward(request, response);//파일의 경로 
+			request.getRequestDispatcher("store_detail.store").forward(request, response);//파일의 경로 
+
+		}else if(command.equals("/store/favoriteDeleteForm.store")) {//즐겨찾기 삭제
+			
+			
+			
+			
 
 		}
 		

@@ -35,8 +35,15 @@
 		</table>
 		
 		
-		<input type="button" value="${result eq 1 ? '즐겨찾기 삭제' : '즐겨찾기 추가'}"  class="btn btn-default" onclick="location.href='favoriteForm.store?storeNum=${storeVO.storeNum }'">
-	
+		<c:if test="${result eq 1}">
+		<input type="button" value="즐겨찾기 삭제"  class="btn btn-default" 
+		onclick="location.href='favoriteDeleteForm.store?orderNum=${orderNum }&storeNum=${storeVO.storeNum }'">
+		</c:if>
+		
+		<c:if test="${result != 1}">
+		<input type="button" value="즐겨찾기 추가"  class="btn btn-default" 
+		onclick="location.href='favoriteInsertForm.store?orderNum=${orderNum }&storeNum=${storeVO.storeNum }'">
+		</c:if>
 		
 		
 		

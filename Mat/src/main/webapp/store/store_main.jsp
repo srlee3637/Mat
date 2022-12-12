@@ -1,8 +1,14 @@
+<%@page import="com.mat.store.model.StoreVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%
+	
+	
+	
+%>
 <%@ include file="../include/header.jsp" %>
 	
 	<div class="container">
@@ -45,7 +51,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="vo" items="${storeList }" varStatus="s">
+				<c:forEach var="vo" items="${storeList }" begin="0" end="9" varStatus="s">
 				<tr>
 					<td><a href="store_detail.store?storeNum=${vo.storeNum }">${vo.storeName }</a></td>
 					<td>${vo.repMenu }</td>
@@ -59,6 +65,17 @@
 					<td colspan="4" align="center">
 						<form action="../store/store_search.store" class="form-inline" >
 						  <div class="form-group">
+							
+							<c:forEach var="i" begin="1" end="" varStatus="s">
+							<tr>
+								<td><a href="store_detail.store?storeNum=${vo.storeNum }">${vo.storeName }</a></td>
+								<td>${vo.repMenu }</td>
+								<td>${vo.price }</td>
+								<td>${vo.category }</td>
+							</tr>
+							</c:forEach>						  	
+						  	
+						  	<a href=""></a>
 						    <input type="text" name="word" placeholder="가게 이름" class="form-control" >
 						  	<input type="submit" value="검색" class="btn btn-default">
 						  </div>

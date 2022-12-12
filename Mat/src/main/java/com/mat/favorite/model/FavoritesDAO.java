@@ -34,8 +34,8 @@ public class FavoritesDAO {
 		
 		//4.필요한 데이터 베이스 변수 선언
 		public String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-		public String UID = "Matzip";
-		public String UPW = "Matzip";
+		public String UID = "mat";
+		public String UPW = "mat";
 		
 		private Connection conn;
 		private PreparedStatement pstmt;
@@ -62,8 +62,6 @@ public class FavoritesDAO {
 				//실행(성공시 1 실패시 0반환) 
 			} catch (Exception e) {
 				e.printStackTrace();
-			}finally {
-				JDBCUtil.close(conn, pstmt, rs);
 			}
 		}
 		

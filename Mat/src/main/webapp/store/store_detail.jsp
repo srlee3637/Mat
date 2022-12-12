@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
+
 	
 	<div class="container">
 		
@@ -32,7 +33,7 @@
 			</tbody>
 		</table>
 		
-		<input type="button" value="즐겨찾기 추가" class="btn btn-default" onclik="location.href='store_detail.store'">
+		<input type="button" value="즐겨찾기 추가" class="btn btn-default" onclick="location.href='../user/favoriteForm.user?storeNum=${storeVO.storeNum }'">
 
 		<br>
 		<h3>가게 메뉴</h3>

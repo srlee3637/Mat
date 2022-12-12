@@ -108,6 +108,8 @@ public class UserServiceImpl implements UserService{
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("user_id");
 		String storeNum = request.getParameter("storeNum");
+		System.out.println(id);
+		System.out.println(storeNum);
 		fdao.insertFavorMain(storeNum, id);
 	}
 

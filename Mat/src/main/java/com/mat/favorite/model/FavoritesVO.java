@@ -2,6 +2,7 @@ package com.mat.favorite.model;
 
 public class FavoritesVO {
 	private int favoritesNum;
+	private String storeNum;
 	private String storeName;
 	private String repMenu;
 	private int price;
@@ -12,9 +13,11 @@ public class FavoritesVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public FavoritesVO(int favoritesNum, String storeName, String repMenu, int price, String category, String id) {
+	public FavoritesVO(int favoritesNum, String storeNum, String storeName, String repMenu, int price, String category,
+			String id) {
 		super();
 		this.favoritesNum = favoritesNum;
+		this.storeNum = storeNum;
 		this.storeName = storeName;
 		this.repMenu = repMenu;
 		this.price = price;
@@ -28,6 +31,14 @@ public class FavoritesVO {
 
 	public void setFavoritesNum(int favoritesNum) {
 		this.favoritesNum = favoritesNum;
+	}
+
+	public String getStoreNum() {
+		return storeNum;
+	}
+
+	public void setStoreNum(String storeNum) {
+		this.storeNum = storeNum;
 	}
 
 	public String getStoreName() {
@@ -69,6 +80,8 @@ public class FavoritesVO {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	
 	
 	
 	

@@ -104,13 +104,20 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void insertFavor(HttpServletRequest request, HttpServletResponse response) {
+	public int insertFavor(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("user_id");
 		String storeNum = request.getParameter("storeNum");
-		System.out.println(id);
-		System.out.println(storeNum);
-		fdao.insertFavorMain(storeNum, id);
+		int result = fdao.storeCheck(storeNum, id);
+		if(result>=1) {//중복
+			return 1; //중복 의미 반환
+
+		}else {
+			fdao.insertFavorMain(storeNum,id);
+		}
+		return 0;
+		
+		
 	}
 
 	@Override
@@ -123,6 +130,8 @@ public class UserServiceImpl implements UserService{
 		
 		return list;
 	}
+	
+	
 	
 	
 	

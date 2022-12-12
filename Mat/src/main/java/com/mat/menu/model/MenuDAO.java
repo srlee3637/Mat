@@ -11,7 +11,7 @@ import com.mat.util.JDBCUtil;
 
 public class MenuDAO {
 
-	public static final String url = "jdbc:oracle:thin:@localhost:1521:XE";
+	public static final String url = "jdbc:oracle:thin:@172.30.1.89:1521:XE";
 	public static final String uid = "mat";
 	public static final String upw = "mat";
 

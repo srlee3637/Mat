@@ -14,6 +14,6 @@ public interface UserService {
 	public UserVO getInfo(HttpServletRequest request, HttpServletResponse response);
 	public int update(HttpServletRequest request, HttpServletResponse response);
 	public int delete(HttpServletRequest request, HttpServletResponse response);
-	public void insertFavor(HttpServletRequest request, HttpServletResponse response);
+	public int insertFavor(HttpServletRequest request, HttpServletResponse response);
 	public ArrayList<FavoritesVO> getFavorites(HttpServletRequest request, HttpServletResponse response);
 }

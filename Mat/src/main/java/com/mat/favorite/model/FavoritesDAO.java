@@ -33,7 +33,7 @@ public class FavoritesDAO {
 		}
 		
 		//4.필요한 데이터 베이스 변수 선언
-		public String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+		public String URL = "jdbc:oracle:thin:@172.30.1.89:1521:xe";
 		public String UID = "mat";
 		public String UPW = "mat";
 		
@@ -42,19 +42,20 @@ public class FavoritesDAO {
 		private ResultSet rs;
 		
 		
-		public void insertFavorSub(String storeName, String repMenu, int price,String category, String id){
-			String sql = "insert into favorites values(seq_favorites.nextval,?,?,?,?,?)";
+		public void insertFavorSub(String storeNum, String storeName, String repMenu, int price,String category, String id){
+			String sql = "insert into favorites values(seq_favorites.nextval,?,?,?,?,?,?)";
 			
 			try {
 				conn = DriverManager.getConnection(URL,UID,UPW);
 				pstmt = conn.prepareStatement(sql);
 				
 				
-				pstmt.setString(1, storeName);
-				pstmt.setString(2, repMenu);
-				pstmt.setInt(3, price);
-				pstmt.setString(4, category);
-				pstmt.setString(5, id);
+				pstmt.setString(1, storeNum);
+				pstmt.setString(2, storeName);
+				pstmt.setString(3, repMenu);
+				pstmt.setInt(4, price);
+				pstmt.setString(5, category);
+				pstmt.setString(6, id);
 				
 				
 				
@@ -89,7 +90,7 @@ public class FavoritesDAO {
 					int price = rs.getInt("price");
 					String category = rs.getString("category");
 
-					this.insertFavorSub(storeName, repMenu, price, category, id);
+					this.insertFavorSub(storeNum, storeName, repMenu, price, category, id);
 				}
 
 			} catch (Exception e) {
@@ -129,13 +130,14 @@ public class FavoritesDAO {
 				while(rs.next()) {
 					
 					int favoritesNum = rs.getInt("favoritesNum");
+					String storeNum = rs.getString("storeNum");
 					String storeName = rs.getString("storeName");
 					String repMenu = rs.getString("repMenu");
 					int price = rs.getInt("price");
 					String category = rs.getString("category");
 					
 
-					FavoritesVO vo = new FavoritesVO(favoritesNum,storeName, repMenu, price, category,id);
+					FavoritesVO vo = new FavoritesVO(favoritesNum,storeNum,storeName, repMenu, price, category,id);
 					list.add(vo);
 				}
 
@@ -152,6 +154,38 @@ public class FavoritesDAO {
 			}
 
 			return list;
+		}
+		
+		
+		public int storeCheck(String storeNum , String id) {
+			int result = 0;
+			
+			String sql = "select count(*) as total from favorites where storeNum=? and  id=?";
+		
+			try {
+				//1.conn 객체
+				conn = DriverManager.getConnection(URL,UID,UPW);
+				
+				//2.pstmt
+				pstmt= conn.prepareStatement(sql);
+				pstmt.setString(1, storeNum);
+				pstmt.setString(2, id);
+				
+				//3.실행
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					result = rs.getInt("total");
+				}
+				
+				
+			} catch (Exception e) {
+			}finally {
+				JDBCUtil.close(conn, pstmt, rs);
+			}
+			
+			return result;
+		
 		}
 	
 }

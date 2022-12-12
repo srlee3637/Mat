@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mat.favorite.model.FavoritesVO;
+import com.mat.menu.model.MenuVO;
 import com.mat.store.model.StoreVO;
 import com.mat.store.service.StoreServiceImpl;
 import com.mat.user.model.UserVO;
@@ -51,8 +52,10 @@ public class UserController extends HttpServlet {
 		String command = uri.substring(path.length());
 		
 		System.out.println("요청경로:" + command);
-		UserServiceImpl userservice = new UserServiceImpl();
+		
+		UserServiceImpl userService = new UserServiceImpl();
 		StoreServiceImpl storeService = new StoreServiceImpl();
+		
 		HttpSession session = request.getSession();//자바에서 현재 세션 얻는 방법
 
 		if(command.equals("/user/user_join.user")) {//회원 가입 페이지
@@ -61,7 +64,7 @@ public class UserController extends HttpServlet {
 		
 		}else if(command.equals("/user/joinForm.user")) {//회원 가입 기능
 			
-			int result = userservice.join(request, response);
+			int result = userService.join(request, response);
 			if(result>=1) {//아이디 중복
 				//메시지
 				request.setAttribute("msg", "중복된 아이디 or email입니다");
@@ -79,7 +82,7 @@ public class UserController extends HttpServlet {
 		
 		}else if(command.equals("/user/loginForm.user")) {//로그인 요청
 			
-			UserVO vo =  userservice.login(request, response);
+			UserVO vo =  userService.login(request, response);
 			System.out.println(vo);
 			if(vo==null) {//로그인 실패
 				request.setAttribute("msg", "아이디와 비밀번호를 확인하세요");
@@ -105,23 +108,31 @@ public class UserController extends HttpServlet {
 
 		}else if(command.equals("/user/favoriteForm.user")) {//즐겨찾기 추가
 			
-//			StoreVO storeVO = storeService.selectStore(request, response);
-//			request.setAttribute("storeVO", storeVO);
 			
-			userservice.insertFavor(request, response);
+			
+			int result = userService.insertFavor(request, response);
+			System.out.println(result);
+			session = request.getSession();
+			session.setAttribute("reuslt", result);
+			
+			StoreVO storeVO = storeService.selectStore(request, response);
+			request.setAttribute("storeVO", storeVO);
+			ArrayList<MenuVO> menuList = storeService.getMenu(request, response);
+			request.setAttribute("menuList", menuList);
+			
 			request.getRequestDispatcher("../store/store_detail.jsp").forward(request, response);//파일의 경로 
 
 			
 		}else if(command.equals("/user/user_favorite.user")) {//즐겨찾기
 			
-			ArrayList<FavoritesVO> list = userservice.getFavorites(request, response);
+			ArrayList<FavoritesVO> list = userService.getFavorites(request, response);
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("user_favorite.jsp").forward(request, response);//파일의 경로 
 
 			
 		}else if(command.equals("/user/updateForm.user")) {//즐겨찾기
 
-			int result = userservice.update(request, response);
+			int result = userService.update(request, response);
 			if(result==1) {//업데이트 성공
 				
 				//response.sendRedirect("user_mypage.user");
@@ -142,7 +153,7 @@ public class UserController extends HttpServlet {
 			
 		}else if(command.equals("/user/user_modify.user")) {//즐겨찾기
 
-			UserVO vo =  userservice.getInfo(request, response);
+			UserVO vo =  userService.getInfo(request, response);
 			request.setAttribute("vo", vo);
 		
 			request.getRequestDispatcher("user_modify.jsp").forward(request, response);
@@ -150,7 +161,7 @@ public class UserController extends HttpServlet {
 			
 		}else if(command.equals("/user/deleteForm.user")) {//회원 탈퇴 기능
 
-			int result = userservice.delete(request, response);
+			int result = userService.delete(request, response);
 			if(result == 1) {
 				response.sendRedirect(path + "/MainPage.main");
 			}else {

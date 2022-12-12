@@ -10,6 +10,7 @@
 		<form action="${pageContext.request.contextPath}/order/order_complete.order" class="form-inline" >
 		
 		<h3>가게 상세 정보</h3>
+		<h3>${sessionScope.result}</h3>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -33,7 +34,11 @@
 			</tbody>
 		</table>
 		
+		
 		<input type="button" value="즐겨찾기 추가" class="btn btn-default" onclick="location.href='../user/favoriteForm.user?storeNum=${storeVO.storeNum }'">
+		
+		
+		
 
 		<br>
 		<h3>가게 메뉴</h3>
@@ -67,6 +72,14 @@
 		</table>
 		</form>
 	</div>
+	
+	
+<script>
+	var msg = '${msg}';
+	if(msg!=''){
+		alert(msg);
+	}
+</script>
 		
 		
 		

@@ -33,7 +33,7 @@ public class FavoritesDAO {
 		}
 		
 		//4.필요한 데이터 베이스 변수 선언
-		public String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+		public String URL = "jdbc:oracle:thin:@172.30.1.89:1521:xe";
 		public String UID = "mat";
 		public String UPW = "mat";
 		

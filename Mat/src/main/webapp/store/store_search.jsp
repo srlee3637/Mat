@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <%@ include file="../include/header.jsp" %>
 	
 	<div class="container">
@@ -20,24 +21,12 @@
 				<c:forEach var="vo" items="${storeList }" varStatus="s">
 				<tr>
 					<td><a href="store_detail.store?storeNum=${vo.storeNum }">${vo.storeName }</a></td>
-					<td><a href="store_detail.store?storeNum=${vo.storeNum }">${vo.repMenu }</a></td>
-					<td><a href="store_detail.store?storeNum=${vo.storeNum }">${vo.price }</a></td>
-					<td><a href="store_detail.store?storeNum=${vo.storeNum }">${vo.category }</a></td>
+					<td>${vo.repMenu }</td>
+					<td>${vo.price }</td>
+					<td>${vo.category }</td>
 				</tr>
 				</c:forEach>
 			</tbody>
-			<tbody>
-				<tr>
-					<td colspan="4" align="center">
-						<form action="../store/store_search.store" class="form-inline" >
-						  <div class="form-group">
-						    <input type="text" name="word" placeholder="가게 이름" class="form-control" >
-						  	<input type="submit" value="검색" class="btn btn-default">
-						  </div>
-						</form> 
-					</td>
-				</tr>
-			</tbody>			
 		</table>
 		
 	</div>

@@ -103,7 +103,15 @@ public class StoreController extends HttpServlet {
 			request.setAttribute("menuList", menuList);
 			
 			request.getRequestDispatcher("store_detail.jsp").forward(request, response);
-		} 
+		
+		
+		} else if(command.equals("/store/store_search.store")) {
+			
+			ArrayList<StoreVO> storeList = storeService.search(request, response);
+			request.setAttribute("storeList", storeList);
+			
+			request.getRequestDispatcher("store_search.jsp").forward(request, response);
+		}
 
 	}
 

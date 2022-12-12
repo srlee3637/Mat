@@ -83,7 +83,7 @@ public class StoreDAO {
 	}
 
 
-	//지역(중구) 선택 메서드
+	//지역(강남) 선택 메서드
 	public ArrayList<StoreVO> selectGn() {
 
 		ArrayList<StoreVO> list = new ArrayList<>();
@@ -99,12 +99,18 @@ public class StoreDAO {
 
 			while(rs.next()) {
 
+				int storeNum = rs.getInt("storeNum");
+				int locationType = rs.getInt("locationType");
 				String storeName = rs.getString("storeName");
+				String storeAddress = rs.getString("storeAddress");
 				String repMenu = rs.getString("repMenu");
 				int price = rs.getInt("price");
+				String contact = rs.getString("contact");
 				String category = rs.getString("category");
-
-				StoreVO vo = new StoreVO(storeName, repMenu, price, category);
+				int priceRangeType = rs.getInt("priceRangeType");
+				
+				StoreVO vo = new StoreVO(storeNum, locationType, storeName,
+						storeAddress, repMenu, price, contact, category, priceRangeType);
 				list.add(vo);
 			}
 
@@ -136,12 +142,18 @@ public class StoreDAO {
 
 			while(rs.next()) {
 
+				int storeNum = rs.getInt("storeNum");
+				int locationType = rs.getInt("locationType");
 				String storeName = rs.getString("storeName");
+				String storeAddress = rs.getString("storeAddress");
 				String repMenu = rs.getString("repMenu");
 				int price = rs.getInt("price");
+				String contact = rs.getString("contact");
 				String category = rs.getString("category");
-
-				StoreVO vo = new StoreVO(storeName, repMenu, price, category);
+				int priceRangeType = rs.getInt("priceRangeType");
+				
+				StoreVO vo = new StoreVO(storeNum, locationType, storeName,
+						storeAddress, repMenu, price, contact, category, priceRangeType);
 				list.add(vo);
 			}
 
@@ -173,12 +185,18 @@ public class StoreDAO {
 
 			while(rs.next()) {
 
+				int storeNum = rs.getInt("storeNum");
+				int locationType = rs.getInt("locationType");
 				String storeName = rs.getString("storeName");
+				String storeAddress = rs.getString("storeAddress");
 				String repMenu = rs.getString("repMenu");
 				int price = rs.getInt("price");
+				String contact = rs.getString("contact");
 				String category = rs.getString("category");
-
-				StoreVO vo = new StoreVO(storeName, repMenu, price, category);
+				int priceRangeType = rs.getInt("priceRangeType");
+				
+				StoreVO vo = new StoreVO(storeNum, locationType, storeName,
+						storeAddress, repMenu, price, contact, category, priceRangeType);
 				list.add(vo);
 			}
 
@@ -194,7 +212,7 @@ public class StoreDAO {
 
 
 	//지역(중구)-가격대 선택 메서드
-	public ArrayList<StoreVO> selectJgP(int PriceRangeType) {
+	public ArrayList<StoreVO> selectJgP(String PriceRangeType) {
 
 		ArrayList<StoreVO> list = new ArrayList<>();
 
@@ -210,12 +228,18 @@ public class StoreDAO {
 
 			while(rs.next()) {
 
+				int storeNum = rs.getInt("storeNum");
+				int locationType = rs.getInt("locationType");
 				String storeName = rs.getString("storeName");
+				String storeAddress = rs.getString("storeAddress");
 				String repMenu = rs.getString("repMenu");
 				int price = rs.getInt("price");
+				String contact = rs.getString("contact");
 				String category = rs.getString("category");
-
-				StoreVO vo = new StoreVO(storeName, repMenu, price, category);
+				int priceRangeType = rs.getInt("priceRangeType");
+				
+				StoreVO vo = new StoreVO(storeNum, locationType, storeName,
+						storeAddress, repMenu, price, contact, category, priceRangeType);
 				list.add(vo);
 			}
 
@@ -231,7 +255,7 @@ public class StoreDAO {
 
 
 	//지역(강남)-가격대 선택 메서드
-	public ArrayList<StoreVO> selectGnPrice(int PriceRangeType) {
+	public ArrayList<StoreVO> selectGnPrice(String PriceRangeType) {
 
 		ArrayList<StoreVO> list = new ArrayList<>();
 
@@ -247,12 +271,18 @@ public class StoreDAO {
 
 			while(rs.next()) {
 
+				int storeNum = rs.getInt("storeNum");
+				int locationType = rs.getInt("locationType");
 				String storeName = rs.getString("storeName");
+				String storeAddress = rs.getString("storeAddress");
 				String repMenu = rs.getString("repMenu");
 				int price = rs.getInt("price");
+				String contact = rs.getString("contact");
 				String category = rs.getString("category");
-
-				StoreVO vo = new StoreVO(storeName, repMenu, price, category);
+				int priceRangeType = rs.getInt("priceRangeType");
+				
+				StoreVO vo = new StoreVO(storeNum, locationType, storeName,
+						storeAddress, repMenu, price, contact, category, priceRangeType);
 				list.add(vo);
 			}
 
@@ -268,7 +298,7 @@ public class StoreDAO {
 	
 	
 	//지역(중구)-카테고리&가격대 선택 메서드
-	public ArrayList<StoreVO> selectJgCP(String ctgy, int priceRangeType) {
+	public ArrayList<StoreVO> selectJgCP(String ctgy, String priceRangeType) {
 
 		ArrayList<StoreVO> list = new ArrayList<>();
 
@@ -285,12 +315,18 @@ public class StoreDAO {
 
 			while(rs.next()) {
 
+				int storeNum = rs.getInt("storeNum");
+				int locationType = rs.getInt("locationType");
 				String storeName = rs.getString("storeName");
+				String storeAddress = rs.getString("storeAddress");
 				String repMenu = rs.getString("repMenu");
 				int price = rs.getInt("price");
+				String contact = rs.getString("contact");
 				String category = rs.getString("category");
-
-				StoreVO vo = new StoreVO(storeName, repMenu, price, category);
+				int priceRangeType2 = rs.getInt("priceRangeType");
+				
+				StoreVO vo = new StoreVO(storeNum, locationType, storeName,
+						storeAddress, repMenu, price, contact, category, priceRangeType2);
 				list.add(vo);
 			}
 
@@ -306,7 +342,7 @@ public class StoreDAO {
 	
 	
 	//지역(강남)-카테고리&가격대 선택 메서드
-	public ArrayList<StoreVO> selectGnCP(String ctgy, int priceRangeType) {
+	public ArrayList<StoreVO> selectGnCP(String ctgy, String priceRangeType) {
 
 		ArrayList<StoreVO> list = new ArrayList<>();
 
@@ -323,12 +359,18 @@ public class StoreDAO {
 
 			while(rs.next()) {
 
+				int storeNum = rs.getInt("storeNum");
+				int locationType = rs.getInt("locationType");
 				String storeName = rs.getString("storeName");
+				String storeAddress = rs.getString("storeAddress");
 				String repMenu = rs.getString("repMenu");
 				int price = rs.getInt("price");
+				String contact = rs.getString("contact");
 				String category = rs.getString("category");
-
-				StoreVO vo = new StoreVO(storeName, repMenu, price, category);
+				int priceRangeType2 = rs.getInt("priceRangeType");
+				
+				StoreVO vo = new StoreVO(storeNum, locationType, storeName,
+						storeAddress, repMenu, price, contact, category, priceRangeType2);
 				list.add(vo);
 			}
 
@@ -344,11 +386,11 @@ public class StoreDAO {
 	
 	
 	//가게 상세정보 리스트 저장 메서드
-	public ArrayList<StoreVO> selectStore(String name) {
+	public StoreVO selectStore(String storeNum) {
 
-		ArrayList<StoreVO> list = new ArrayList<>();
+		StoreVO vo = new StoreVO();
 
-		String sql = "select * from STORE where storeName = '" + name + "'";
+		String sql = "select * from STORE where storeNum = " + storeNum;
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -358,16 +400,18 @@ public class StoreDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-
+				
+				int storeNum2 = rs.getInt("storeNum");
+				int locationType = rs.getInt("locationType");
 				String storeName = rs.getString("storeName");
+				String storeAddress = rs.getString("storeAddress");
 				String repMenu = rs.getString("repMenu");
 				int price = rs.getInt("price");
-				String category = rs.getString("category");
-				String storeAddress = rs.getString("storeAddress");
 				String contact = rs.getString("contact");
+				String category = rs.getString("category");
+				int priceRangeType = rs.getInt("priceRangeType");
 
-				StoreVO vo = new StoreVO(storeName, storeAddress, repMenu, price, category, contact);
-				list.add(vo);
+				vo = new StoreVO(storeNum2, locationType, storeName, storeAddress, repMenu, price, contact, category, priceRangeType);
 			}
 
 		} catch (Exception e) {
@@ -377,7 +421,7 @@ public class StoreDAO {
 			JDBCUtil.close(conn, pstmt, rs);
 		}
 
-		return list;
+		return vo;
 	}
 
 
@@ -385,7 +429,8 @@ public class StoreDAO {
 	public int insert(String storeName, String repMenu, int price, String category) {
 
 		int result = 0;
-
+		
+		//수정 필요
 		String sql = "insert into favorites values(seq_favorites.nextval, ?, ?, ?, ?)";
 
 		try {
@@ -405,12 +450,7 @@ public class StoreDAO {
 			e.printStackTrace();
 
 		} finally {
-			try {
-				conn.close();
-				pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			JDBCUtil.close(conn, pstmt, rs);
 		}
 
 		return result;

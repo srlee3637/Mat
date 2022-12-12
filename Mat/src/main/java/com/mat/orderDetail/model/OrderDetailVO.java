@@ -1,9 +1,10 @@
-package com.mat.order.model;
+package com.mat.orderDetail.model;
 
 import java.sql.Timestamp;
 
-public class OrderVO {
+public class OrderDetailVO {
 	
+	private String orderDetailNum;
 	private String orderNum;
 	private String id;
 	private String storeNum;
@@ -11,17 +12,16 @@ public class OrderVO {
 	private String menuNum;
 	private String menuName;
 	private String price;
-	private String menuCnt;
+	private String menuQuantity;
 	private Timestamp orderDate;
 	
 	
-	public OrderVO() {
-		super();
-	}
+	public OrderDetailVO() { }
 
-	public OrderVO(String orderNum, String id, String storeNum, String storeName, String menuNum, String menuName,
-			String price, String menuCnt, Timestamp orderDate) {
+	public OrderDetailVO(String orderDetailNum, String orderNum, String id, String storeNum, String storeName,
+			String menuNum, String menuName, String price, String menuQuantity, Timestamp orderDate) {
 		super();
+		this.orderDetailNum = orderDetailNum;
 		this.orderNum = orderNum;
 		this.id = id;
 		this.storeNum = storeNum;
@@ -29,11 +29,19 @@ public class OrderVO {
 		this.menuNum = menuNum;
 		this.menuName = menuName;
 		this.price = price;
-		this.menuCnt = menuCnt;
+		this.menuQuantity = menuQuantity;
 		this.orderDate = orderDate;
 	}
 
 	
+	public String getOrderDetailNum() {
+		return orderDetailNum;
+	}
+
+	public void setOrderDetailNum(String orderDetailNum) {
+		this.orderDetailNum = orderDetailNum;
+	}
+
 	public String getOrderNum() {
 		return orderNum;
 	}
@@ -90,12 +98,12 @@ public class OrderVO {
 		this.price = price;
 	}
 
-	public String getMenuCnt() {
-		return menuCnt;
+	public String getMenuQuantity() {
+		return menuQuantity;
 	}
 
-	public void setMenuCnt(String menuCnt) {
-		this.menuCnt = menuCnt;
+	public void setMenuQuantity(String menuQuantity) {
+		this.menuQuantity = menuQuantity;
 	}
 
 	public Timestamp getOrderDate() {
@@ -108,9 +116,9 @@ public class OrderVO {
 
 	
 	public String toString() {
-		return "OrderVO : orderNum=" + orderNum + ", id=" + id + ", storeNum=" + storeNum + ", storeName=" + storeName
-				+ ", menuNum=" + menuNum + ", menuName=" + menuName + ", price=" + price + ", menuCnt=" + menuCnt
-				+ ", orderDate=" + orderDate;
+		return "OrderDetailVO : orderDetailNum=" + orderDetailNum + ", orderNum=" + orderNum + ", id=" + id
+				+ ", storeNum=" + storeNum + ", storeName=" + storeName + ", menuNum=" + menuNum + ", menuName="
+				+ menuName + ", price=" + price + ", menuQuantity=" + menuQuantity + ", orderDate=" + orderDate;
 	}
 
 	

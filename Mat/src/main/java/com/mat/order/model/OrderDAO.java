@@ -71,11 +71,11 @@ public class OrderDAO {
 	
 	
 	//getList Method
-	public ArrayList<OrderVO> getList() {
+	public ArrayList<OrderVO> getList(String id) {
 
 		ArrayList<OrderVO> list = new ArrayList<>();
 
-		String sql = "select * from ORDERS order by orderNum desc";
+		String sql = "select * from orders where id = ? order by orderNum desc";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -87,7 +87,7 @@ public class OrderDAO {
 			while(rs.next()) {
 				
 				String orderNum = rs.getString("orderNum");
-				String id = rs.getString("id");
+				String id2 = rs.getString("id2");
 				String storeNum = rs.getString("storeNum");
 				String storeName = rs.getString("storeName");
 				String menuNum = rs.getString("menuNum");
@@ -96,7 +96,7 @@ public class OrderDAO {
 				String menuCnt = rs.getString("menuCnt");
 				Timestamp orderDate = rs.getTimestamp("orderDate");
 				
-				OrderVO vo = new OrderVO(orderNum, id, storeNum, storeName,
+				OrderVO vo = new OrderVO(orderNum, id2, storeNum, storeName,
 						menuNum, menuName, price, menuCnt, orderDate);
 				list.add(vo);
 			}

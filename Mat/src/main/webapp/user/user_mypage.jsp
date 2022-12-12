@@ -5,7 +5,7 @@
 <section>
 	<div align="center">
 			${sessionScope.user_id }	
-			
+			<a href="../order/order_history.order">[나의주문내역]</a>
 			
 			
 			<div>

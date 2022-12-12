@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mat.menu.model.MenuDAO;
 import com.mat.menu.model.MenuVO;
@@ -20,14 +21,14 @@ public class OrderServiceImpl implements OrderService{
 	OrderDetailDAO orderDetailDAO = OrderDetailDAO.getInstance();
 	StoreDAO storeDAO = StoreDAO.getInstance();
 	MenuDAO menuDAO = MenuDAO.getInstance();
-
+	
 
 	//주문 내역 저장하고 마지막 주문 상세정보 반환 메서드
 	public ArrayList<OrderDetailVO> insertOrder(HttpServletRequest request, HttpServletResponse response) {
 
-		//		HttpSession session = request.getSession();
-		//		String id = (String)session.getAttribute("user_id");
-		String id = "aaa1";
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("user_id");
+		
 
 		String storeNum = request.getParameter("storeNum");
 		StoreVO storeVO = storeDAO.selectStore(storeNum);
@@ -53,7 +54,7 @@ public class OrderServiceImpl implements OrderService{
 				String menuNum = Integer.toString(menuList.get(i-1).getMenuNum());
 				String menuName = menuList.get(i-1).getMenuName();
 				String price = Integer.toString(menuList.get(i-1).getPrice());
-
+				
 				int result = orderDAO.insertOrder(id, storeNum, storeName, menuNum, menuName, price, menuCnt);
 
 				break;
@@ -94,8 +95,10 @@ public class OrderServiceImpl implements OrderService{
 
 	//주문 내역 전체 불러오는 메서드
 	public ArrayList<OrderVO> getOrderList(HttpServletRequest request, HttpServletResponse response) {
-
-		ArrayList<OrderVO> list = orderDAO.getList();
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("user_id");
+		ArrayList<OrderVO> list = orderDAO.getList(id);
 
 		return list;
 	}

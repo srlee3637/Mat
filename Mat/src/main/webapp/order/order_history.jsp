@@ -14,6 +14,7 @@
 					<th align="center">주문 번호</th>
 					<th align="center">가게 이름</th>
 					<th align="center">주문 메뉴</th>
+					<th align="center">주문 날짜</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -22,7 +23,8 @@
 					<td align="center">${s.count }</td>
 					<td align="center">${vo.orderNum }</td>
 					<td align="center"><a href="order_detail.order?orderNum=${vo.orderNum }&storeNum=${vo.storeNum }">${vo.storeName }</a></td>
-					<td>${vo.menuName } 외 ${vo.menuCnt } 개</td>
+					<td>${vo.menuName } 외 ${vo.menuCnt }개</td>
+					<td>${vo.orderDate }</td>
 				</tr>
 				</c:forEach>
 			</tbody>

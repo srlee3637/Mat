@@ -32,7 +32,7 @@ public class PriceRangeDAO {
 	}
 
 	//4. 필요한 데이터베이스 변수 선언
-	public static final String url = "jdbc:oracle:thin:@172.30.1.89:1521:XE";
+	public static final String url = "jdbc:oracle:thin:@172.30.1.100:1521:XE";
 	public static final String uid = "mat";
 	public static final String upw = "mat";
 

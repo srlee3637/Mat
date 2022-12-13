@@ -27,7 +27,7 @@ public class OrderDAO {
 		return instance;
 	}
 
-	public static final String url = "jdbc:oracle:thin:@172.30.1.89:1521:XE";
+	public static final String url = "jdbc:oracle:thin:@172.30.1.100:1521:XE";
 	public static final String uid = "mat";
 	public static final String upw = "mat";
 

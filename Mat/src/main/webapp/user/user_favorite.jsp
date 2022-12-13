@@ -8,7 +8,7 @@
 	
 <section class="banner-area text-center">
 	<div class="container">
-		
+		<h3>즐겨찾기 목록 </h3>
 
 		<table class="table table-bordered">
 			<thead>
